@@ -16,13 +16,13 @@ h1 {
     border: 3px solid black;
     text-shadow: -8px 4px 0px #a3cef1;
     margin: auto;
-    padding: 10px;
-    width: 30%;
+    padding: 5%;
+    width: 80% !important;
 }
 .form {
     display: flex;
     flex-direction: column;
-    height: 80%;
+    height: 90%;
     width: 60%;
     margin: auto;
     align-items: center;
