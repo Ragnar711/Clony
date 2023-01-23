@@ -17,8 +17,8 @@ const postMedia = async (req, res, next) => {
         const newMedia = await prisma.media.create({
             data: {
                 Name,
-                Year,
-                Review,
+                Year: Number(Year),
+                Review: Number(Review),
                 MediaType,
                 Actor1,
                 Actor2,
