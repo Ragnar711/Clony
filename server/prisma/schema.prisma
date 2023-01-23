@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model media {
+  id        String    @id @default(uuid())
+  Name      String @unique @db.VarChar(255)
+  Review    Int 
+  Year      Int 
+  Actor1    String @db.VarChar(255)
+  Actor2    String @db.VarChar(255)
+  Actor3    String @db.VarChar(255)
+  MediaType String @db.VarChar(255)
+}

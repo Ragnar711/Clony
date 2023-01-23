@@ -1,0 +1,51 @@
+.AddNewHeader {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../assets/addNewBg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.AddNew {
+    height: 100%;
+    margin-top: 150px;
+}
+h1 {
+    font-size: 2.5rem;
+    color: #274c77;
+    border: 3px solid black;
+    text-shadow: -8px 4px 0px #a3cef1;
+    margin: auto;
+    padding: 10px;
+    width: 30%;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 60%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50px;
+}
+.firstRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50% !important;
+}
+.input {
+    height: 50px;
+    background-color: white;
+    margin-top: 10% !important;
+}
+
+.actors {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 60% !important;
+}
