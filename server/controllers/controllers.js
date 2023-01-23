@@ -14,7 +14,7 @@ const postMedia = async (req, res, next) => {
         Actor4,
     } = req.body;
     try {
-        const mediaExists = await prisma.Media.findUnique({
+        const mediaExists = await prisma.media.findUnique({
             where: {
                 Name,
             },
@@ -24,7 +24,7 @@ const postMedia = async (req, res, next) => {
                 message: "Media already exists",
             });
         }
-        const newMedia = await prisma.Media.create({
+        const newMedia = await prisma.media.create({
             data: {
                 Name,
                 Year: Number(Year),
@@ -38,6 +38,7 @@ const postMedia = async (req, res, next) => {
             },
         });
         res.json(newMedia);
+        console.log("Media added successfully");
     } catch (error) {
         next(error);
     }

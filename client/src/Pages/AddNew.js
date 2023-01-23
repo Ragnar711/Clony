@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Axios from "axios";
+import Axios from "redaxios";
 import { Box, TextField, Button, Rating, Typography } from "@mui/material";
 import "./addNew.css";
 import Header from "../Components/Header";
