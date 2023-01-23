@@ -1,34 +1,14 @@
 const express = require("express");
-const app = express();
 const cors = require("cors");
-const bodyParser = require("body-parser");
 const routes = require("./routes/routes");
 
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+const app = express();
 
-app.use(
-    cors({
-        origin: "*",
-    })
-);
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors({ origin: "*" }));
 app.use(express.json());
+app.use(routes);
 
-async function main() {}
-
-main()
-    .then(async () => {
-        await prisma.$disconnect();
-    })
-    .catch(async (e) => {
-        console.error(e);
-        await prisma.$disconnect();
-        process.exit(1);
-    });
-
-app.use("/", routes);
-
-app.listen(5000, () => {
-    console.log("listening on port 5000");
+const PORT = 5000;
+app.listen(PORT, () => {
+    console.log(`Server is listening on port ${PORT}...`);
 });

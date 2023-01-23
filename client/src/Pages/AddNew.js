@@ -1,38 +1,37 @@
 import { useState } from "react";
 import Axios from "axios";
-import Header from "../Components/Header";
+import { Box, TextField, Button, Rating, Typography } from "@mui/material";
 import "./addNew.css";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Rating from "@mui/material/Rating";
-import Typography from "@mui/material/Typography";
+import Header from "../Components/Header";
+
+const initialState = {
+    Name: "",
+    Year: 0,
+    Review: 0,
+    Actor1: "",
+    Actor2: "",
+    Actor3: "",
+    Actor4: "",
+    Director: "",
+    MediaType: "",
+};
 
 function AddNew() {
-    const [Name, setName] = useState("");
-    const [Year, setYear] = useState(0);
-    const [Review, setReview] = useState(0);
-    const [Actor1, setAcotor1] = useState("");
-    const [Actor2, setAcotor2] = useState("");
-    const [Actor3, setAcotor3] = useState("");
-    const [Actor4, setAcotor4] = useState("");
-    const [Director, setDirector] = useState("");
-    const [MediaType, setMediaType] = useState("");
-    const submitMedia = () => {
-        Axios.post("http://localhost:5000/postMedia", {
-            Name: Name,
-            Year: Year,
-            MediaType: MediaType,
-            Review: Review,
-            Actor1: Actor1,
-            Actor2: Actor2,
-            Actor3: Actor3,
-            Actor4: Actor4,
-            Director: Director,
-        }).then((res) => {
-            window.location.reload();
+    const [form, setForm] = useState(initialState);
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+    const submitMedia = async () => {
+        try {
+            const res = await Axios.post(
+                "http://localhost:5000/postMedia",
+                form
+            );
             console.log(res);
-        });
+            window.location.reload();
+        } catch (err) {
+            console.error(err);
+        }
     };
     return (
         <div className="AddNewHeader">
@@ -51,30 +50,24 @@ function AddNew() {
                     <div className="firstRow">
                         <TextField
                             className="input"
-                            id="outlined-basic"
+                            name="Name"
                             label="Name"
                             variant="outlined"
-                            onChange={(e) => {
-                                setName(e.target.value);
-                            }}
+                            onChange={handleChange}
                         />
                         <TextField
                             className="input"
-                            id="outlined-basic"
+                            name="Year"
                             label="Year"
                             variant="outlined"
-                            onChange={(e) => {
-                                setYear(e.target.value);
-                            }}
+                            onChange={handleChange}
                         />
                         <TextField
                             className="input"
-                            id="outlined-basic"
+                            name="MediaType"
                             label="Media Type"
                             variant="outlined"
-                            onChange={(e) => {
-                                setMediaType(e.target.value);
-                            }}
+                            onChange={handleChange}
                         />
                     </div>
                     <Box
@@ -86,59 +79,47 @@ function AddNew() {
                         <Typography component="legend">Rating</Typography>
                         <Rating
                             className="stars"
-                            name="simple-controlled"
-                            onChange={(e) => {
-                                setReview(e.target.value);
-                            }}
+                            name="Review"
+                            onChange={handleChange}
                         />
                     </Box>
                     <div className="director">
                         <TextField
                             className="input"
-                            id="outlined-basic"
+                            name="Director"
                             label="Director"
                             variant="outlined"
-                            onChange={(e) => {
-                                setDirector(e.target.value);
-                            }}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="actors">
                         <TextField
                             className="input"
-                            id="outlined-basic"
+                            name="Actor1"
                             label="Actor 1"
                             variant="outlined"
-                            onChange={(e) => {
-                                setAcotor1(e.target.value);
-                            }}
+                            onChange={handleChange}
                         />
                         <TextField
                             className="input"
-                            id="outlined-basic"
+                            name="Actor2"
                             label="Actor 2"
                             variant="outlined"
-                            onChange={(e) => {
-                                setAcotor2(e.target.value);
-                            }}
+                            onChange={handleChange}
                         />
                         <TextField
                             className="input"
                             id="outlined-basic"
                             label="Actor 3"
                             variant="outlined"
-                            onChange={(e) => {
-                                setAcotor3(e.target.value);
-                            }}
+                            onChange={handleChange}
                         />
                         <TextField
                             className="input"
                             id="outlined-basic"
                             label="Actor 4"
                             variant="outlined"
-                            onChange={(e) => {
-                                setAcotor4(e.target.value);
-                            }}
+                            onChange={handleChange}
                         />
                     </div>
                     <Button

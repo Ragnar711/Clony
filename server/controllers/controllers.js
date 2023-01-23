@@ -2,9 +2,19 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const postMedia = async (req, res, next) => {
-    const { Name, Year, Review, MediaType, Actor1, Actor2, Actor3 } = req.body;
+    const {
+        Name,
+        Year,
+        Review,
+        MediaType,
+        Director,
+        Actor1,
+        Actor2,
+        Actor3,
+        Actor4,
+    } = req.body;
     try {
-        const mediaExists = await prisma.media.findUnique({
+        const mediaExists = await prisma.Media.findUnique({
             where: {
                 Name,
             },
@@ -14,15 +24,17 @@ const postMedia = async (req, res, next) => {
                 message: "Media already exists",
             });
         }
-        const newMedia = await prisma.media.create({
+        const newMedia = await prisma.Media.create({
             data: {
                 Name,
                 Year: Number(Year),
                 Review: Number(Review),
                 MediaType,
+                Director,
                 Actor1,
                 Actor2,
                 Actor3,
+                Actor4,
             },
         });
         res.json(newMedia);

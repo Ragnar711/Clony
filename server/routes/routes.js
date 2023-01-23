@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const { postMedia } = require("../controllers/controllers");
 
-const controllers = require("../controllers/controllers");
-
-router.post("/postMedia", controllers.postMedia);
+router.post("/postMedia", postMedia);
 
 module.exports = router;
