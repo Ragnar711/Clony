@@ -20,9 +20,10 @@ const postMedia = async (req, res, next) => {
             },
         });
         if (mediaExists) {
-            return res.status(400).json({
+            res.status(400).json({
                 message: "Media already exists",
             });
+            return;
         }
         const newMedia = await prisma.media.create({
             data: {
@@ -37,8 +38,7 @@ const postMedia = async (req, res, next) => {
                 Actor4,
             },
         });
-        res.json(newMedia);
-        console.log("Media added successfully");
+        res.status(200).json(newMedia);
     } catch (error) {
         next(error);
     }
