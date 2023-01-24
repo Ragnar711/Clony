@@ -1,13 +1,24 @@
 const request = require("supertest");
 const { makeApp } = require("../app");
-const jest = require("@jest/globals")
+
+let data = null
+
+const findUnique = async () => {
+    return !!data
+}
+
+const create = async (body) => {
+    data = body.data
+    return body
+}
 
 const prisma = {
     media: {
-        findUnique: jest.fn(),
-        create: jest.fn()
+        findUnique,
+        create
     }
 } 
+const app = makeApp(prisma)
 
 describe("Post /media", () => {
     test("should create new media", async () => {
@@ -23,7 +34,7 @@ describe("Post /media", () => {
             Actor4: "Actor 4",
         });
         expect(response.status).toBe(200);
-        expect(response.body).toEqual({
+        expect(response.body.data).toEqual({
             Name: "Test",
             Year: 2005,
             Review: 4,
@@ -35,7 +46,7 @@ describe("Post /media", () => {
             Actor4: "Actor 4",
         });
     });
-    /*test("should return error if media exists", async () => {
+    test("should return error if media exists", async () => {
         const response = await request(app).post("/postMedia").send({
             Name: "Test Media",
             Year: "2000",
@@ -51,5 +62,5 @@ describe("Post /media", () => {
         expect(response.body).toEqual({
             message: "Media already exists",
         });
-    });*/
+    });
 });
