@@ -1,6 +1,3 @@
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
-
 const postMedia = async (req, res, next) => {
     const {
         Name,
@@ -13,6 +10,7 @@ const postMedia = async (req, res, next) => {
         Actor3,
         Actor4,
     } = req.body;
+    const prisma = req.app.get("prisma")
     try {
         const mediaExists = await prisma.media.findUnique({
             where: {
