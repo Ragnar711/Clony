@@ -23,11 +23,7 @@ function AddNew() {
     };
     const submitMedia = async () => {
         try {
-            const res = await Axios.post(
-                "http://localhost:8080/postMedia",
-                form
-            );
-            console.log(res);
+            await Axios.post("http://localhost:8080/postMedia", form);
             window.location.reload();
         } catch (err) {
             console.error(err);
