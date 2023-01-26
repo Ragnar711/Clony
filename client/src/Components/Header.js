@@ -1,12 +1,42 @@
 import "./Header.css";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+    const navigate = useNavigate();
     return (
         <div className="navbar">
-            <span className="nav-item">Add new</span>
-            <span className="nav-item">Movies</span>
-            <span className="nav-item">TV Shows</span>
-            <span className="nav-item">Animes</span>
+            <span
+                className="nav-item"
+                onClick={() => {
+                    navigate("/AddNew");
+                }}
+            >
+                Add new
+            </span>
+            <span
+                className="nav-item"
+                onClick={() => {
+                    navigate("/Movies");
+                }}
+            >
+                Movies
+            </span>
+            <span
+                className="nav-item"
+                onClick={() => {
+                    navigate("/TVShows");
+                }}
+            >
+                TV Shows
+            </span>
+            <span
+                className="nav-item"
+                onClick={() => {
+                    navigate("/Animes");
+                }}
+            >
+                Animes
+            </span>
             <span className="nav-item">Actors</span>
             <span className="nav-item">Stats</span>
         </div>

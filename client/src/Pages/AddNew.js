@@ -7,13 +7,13 @@ import Header from "../Components/Header";
 const initialState = {
     Name: "",
     Year: 0,
+    MediaType: "",
     Review: 0,
+    Director: "",
     Actor1: "",
     Actor2: "",
     Actor3: "",
     Actor4: "",
-    Director: "",
-    MediaType: "",
 };
 
 function AddNew() {
@@ -24,7 +24,7 @@ function AddNew() {
     const submitMedia = async () => {
         try {
             const res = await Axios.post(
-                "http://localhost:5000/postMedia",
+                "http://localhost:8080/postMedia",
                 form
             );
             console.log(res);

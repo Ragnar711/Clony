@@ -1,4 +1,4 @@
-const postMedia = async (req, res, next) => {
+const postMedia = async (req, res) => {
     const {
         Name,
         Year,
@@ -10,7 +10,7 @@ const postMedia = async (req, res, next) => {
         Actor3,
         Actor4,
     } = req.body;
-    const prisma = req.app.get("prisma")
+    const prisma = req.app.get("prisma");
     try {
         const mediaExists = await prisma.media.findUnique({
             where: {
@@ -27,8 +27,8 @@ const postMedia = async (req, res, next) => {
             data: {
                 Name,
                 Year: Number(Year),
-                Review: Number(Review),
                 MediaType,
+                Review: Number(Review),
                 Director,
                 Actor1,
                 Actor2,
@@ -36,12 +36,27 @@ const postMedia = async (req, res, next) => {
                 Actor4,
             },
         });
-        res.status(200).json(newMedia);
-    } catch (error) {
-        next(error);
+        res.status(201).json(newMedia);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+const getMovie = async (req, res) => {
+    const prisma = req.app.get("prisma");
+    try {
+        const Movies = await prisma.media.findMany({
+            where: {
+                MediaType: "Movie",
+            },
+        });
+        res.status(200).json(Movies);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
 };
 
 module.exports = {
     postMedia,
+    getMovie,
 };
