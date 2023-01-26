@@ -10,7 +10,7 @@
     height: 100%;
     margin-top: 150px;
 }
-h1 {
+#addNewHeader {
     font-size: 2.5rem;
     color: #274c77;
     border: 3px solid black;

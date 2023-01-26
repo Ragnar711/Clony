@@ -42,7 +42,7 @@ function AddNew() {
                     noValidate
                     autoComplete="off"
                 >
-                    <h1>Add New Media</h1>
+                    <h1 id="addNewHeader">Add New Media</h1>
                     <div className="firstRow">
                         <TextField
                             className="input"
