@@ -12,7 +12,9 @@
     padding: 0 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
 }
-
+.navbar > span:hover {
+    cursor: pointer;
+}
 .nav-item {
     color: #fff;
     text-decoration: none;

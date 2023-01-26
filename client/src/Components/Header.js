@@ -8,7 +8,7 @@ function Header() {
             <span
                 className="nav-item"
                 onClick={() => {
-                    navigate("/AddNew");
+                    navigate("/");
                 }}
             >
                 Add new
