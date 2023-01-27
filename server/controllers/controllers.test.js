@@ -82,7 +82,7 @@ describe("Get /movies", () => {
             },
         ];
         db.findMany.mockResolvedValue(movies);
-        const response = await request(app).get("/getMovie");
+        const response = await request(app).get("/getMovies");
         expect(response.status).toBe(200);
         expect(response.body).toEqual(movies);
         expect(db.findMany).toHaveBeenCalled();
@@ -93,7 +93,7 @@ describe("Get /movies", () => {
     test("should return an error when the database call fails", async () => {
         const error = new Error("Error getting movies from the database");
         db.findMany.mockRejectedValue(error);
-        const response = await request(app).get("/getMovie");
+        const response = await request(app).get("/getMovies");
         expect(response.status).toBe(500);
         expect(response.body).toMatchObject({ message: error.message });
     });

@@ -36,4 +36,9 @@ h1 {
 
 .moviesContainer {
     padding: 100px;
+    margin-top: 2rem;
+}
+
+.tab {
+    font-weight: bold;
 }

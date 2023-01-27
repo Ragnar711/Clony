@@ -44,27 +44,36 @@ function AddNew() {
                 >
                     <h1 id="addNewHeader">Add New Media</h1>
                     <div className="firstRow">
-                        <TextField
-                            className="input"
-                            name="Name"
-                            label="Name"
-                            variant="outlined"
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            className="input"
-                            name="Year"
-                            label="Year"
-                            variant="outlined"
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            className="input"
-                            name="MediaType"
-                            label="Media Type"
-                            variant="outlined"
-                            onChange={handleChange}
-                        />
+                        <div>
+                            <TextField
+                                className="input"
+                                name="Name"
+                                label="Name"
+                                variant="outlined"
+                                onChange={handleChange}
+                            />
+                            <p className="error"></p>
+                        </div>
+                        <div>
+                            <TextField
+                                className="input"
+                                name="Year"
+                                label="Year"
+                                variant="outlined"
+                                onChange={handleChange}
+                            />
+                            <p className="error"></p>
+                        </div>
+                        <div>
+                            <TextField
+                                className="input"
+                                name="MediaType"
+                                label="Media Type"
+                                variant="outlined"
+                                onChange={handleChange}
+                            />
+                            <p className="error"></p>
+                        </div>
                     </div>
                     <Box
                         sx={{

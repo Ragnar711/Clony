@@ -42,7 +42,7 @@ const postMedia = async (req, res) => {
     }
 };
 
-const getMovie = async (req, res) => {
+const getMovies = async (req, res) => {
     const prisma = req.app.get("prisma");
     try {
         const Movies = await prisma.media.findMany({
@@ -56,7 +56,37 @@ const getMovie = async (req, res) => {
     }
 };
 
+const getTVShows = async (req, res) => {
+    const prisma = req.app.get("prisma");
+    try {
+        const TVShows = await prisma.media.findMany({
+            where: {
+                MediaType: "TV Show",
+            },
+        });
+        res.status(200).json(TVShows);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+const getAnimes = async (req, res) => {
+    const prisma = req.app.get("prisma");
+    try {
+        const Animes = await prisma.media.findMany({
+            where: {
+                MediaType: "Anime",
+            },
+        });
+        res.status(200).json(Animes);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
 module.exports = {
     postMedia,
-    getMovie,
+    getMovies,
+    getTVShows,
+    getAnimes,
 };

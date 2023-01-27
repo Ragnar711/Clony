@@ -19,23 +19,7 @@ function Header() {
                     navigate("/Movies");
                 }}
             >
-                Movies
-            </span>
-            <span
-                className="nav-item"
-                onClick={() => {
-                    navigate("/TVShows");
-                }}
-            >
-                TV Shows
-            </span>
-            <span
-                className="nav-item"
-                onClick={() => {
-                    navigate("/Animes");
-                }}
-            >
-                Animes
+                Medias
             </span>
             <span className="nav-item">Actors</span>
             <span className="nav-item">Stats</span>

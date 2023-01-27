@@ -49,3 +49,19 @@
     align-items: center;
     width: 60% !important;
 }
+
+.error {
+    margin-top: 10px;
+    background: hsl(0 100% 50% / 0.2);
+    border: 2px solid hsl(0 100% 50% / 1);
+    border-radius: 0.125em;
+    padding: 0.5em;
+}
+
+.error:empty {
+    display: none;
+}
+
+.firstRow > div {
+    margin-right: 25px;
+}
