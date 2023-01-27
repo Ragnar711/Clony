@@ -86,7 +86,7 @@ const getAnimes = async (req, res) => {
 
 const deleteMedia = async (req, res) => {
     const prisma = req.app.get("prisma");
-    const id = req.params.id;
+    const { id } = req.params;
     try {
         const deleted = await prisma.media.delete({
             where: {

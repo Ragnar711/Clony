@@ -44,6 +44,22 @@ const Movies = () => {
                 setLoading(false);
             });
     }, []);
+    const deleteMedia = async (id) => {
+        try {
+            const response = await Axios.delete(
+                `http://localhost:8080/deleteMedia/${id}`
+            );
+            const newMovies = movies.filter((movie) => movie.id !== id);
+            setMovies(newMovies);
+            const newTVShows = tvshows.filter((tvshow) => tvshow.id !== id);
+            setTvshows(newTVShows);
+            const newAnimes = animes.filter((anime) => anime.id !== id);
+            setAnimes(newAnimes);
+            return response.data;
+        } catch (err) {
+            throw new Error(err.message);
+        }
+    };
     if (loading) {
         return <p>Loading...</p>;
     }
@@ -80,7 +96,14 @@ const Movies = () => {
                                                     <td>{item.Year}</td>
                                                     <td>{item.Review}</td>
                                                     <td>
-                                                        <button className="deleteMovie">
+                                                        <button
+                                                            className="deleteMovie"
+                                                            onClick={() => {
+                                                                deleteMedia(
+                                                                    item.id
+                                                                );
+                                                            }}
+                                                        >
                                                             Delete
                                                         </button>
                                                     </td>
@@ -108,7 +131,14 @@ const Movies = () => {
                                                     <td>{item.Year}</td>
                                                     <td>{item.Review}</td>
                                                     <td>
-                                                        <button className="deleteMovie">
+                                                        <button
+                                                            className="deleteMovie"
+                                                            onClick={() => {
+                                                                deleteMedia(
+                                                                    item.id
+                                                                );
+                                                            }}
+                                                        >
                                                             Delete
                                                         </button>
                                                     </td>
@@ -136,7 +166,14 @@ const Movies = () => {
                                                     <td>{item.Year}</td>
                                                     <td>{item.Review}</td>
                                                     <td>
-                                                        <button className="deleteMovie">
+                                                        <button
+                                                            className="deleteMovie"
+                                                            onClick={() => {
+                                                                deleteMedia(
+                                                                    item.id
+                                                                );
+                                                            }}
+                                                        >
                                                             Delete
                                                         </button>
                                                     </td>
