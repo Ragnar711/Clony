@@ -1,5 +1,6 @@
 const request = require("supertest");
 const { makeApp } = require("../app");
+const { deleteMedia } = require("./controllers");
 
 const prisma = {
     media: {
@@ -96,5 +97,80 @@ describe("Get /movies", () => {
         const response = await request(app).get("/getMovies");
         expect(response.status).toBe(500);
         expect(response.body).toMatchObject({ message: error.message });
+    });
+});
+
+describe("deleteMedia", () => {
+    test("deletes a media and returns a 200 status code and the deleted media", async () => {
+        const mockedPrisma = {
+            media: {
+                delete: jest.fn(() =>
+                    Promise.resolve({
+                        id: 1,
+                        Name: "Test",
+                        Year: 2005,
+                        MediaType: "Movie",
+                        Review: 4,
+                        Director: "Director",
+                        Actor1: "Actor 1",
+                        Actor2: "Actor 2",
+                        Actor3: "Actor 3",
+                        Actor4: "Actor 4",
+                    })
+                ),
+            },
+        };
+        const req = {
+            app: {
+                get: jest.fn(() => mockedPrisma),
+            },
+            params: {
+                id: 1,
+            },
+        };
+        const res = {
+            status: jest.fn(() => res),
+            json: jest.fn(() => res),
+        };
+        await deleteMedia(req, res);
+        expect(res.status).toHaveBeenCalledWith(200);
+        expect(res.json).toHaveBeenCalledWith({
+            id: 1,
+            Name: "Test",
+            Year: 2005,
+            MediaType: "Movie",
+            Review: 4,
+            Director: "Director",
+            Actor1: "Actor 1",
+            Actor2: "Actor 2",
+            Actor3: "Actor 3",
+            Actor4: "Actor 4",
+        });
+    });
+    test("returns a 500 status code and an error message when Prisma throws an error", async () => {
+        const mockedPrisma = {
+            media: {
+                delete: jest.fn(() =>
+                    Promise.reject(new Error("Error deleting media"))
+                ),
+            },
+        };
+        const req = {
+            app: {
+                get: jest.fn(() => mockedPrisma),
+            },
+            params: {
+                id: 1,
+            },
+        };
+        const res = {
+            status: jest.fn(() => res),
+            json: jest.fn(() => res),
+        };
+        await deleteMedia(req, res);
+        expect(res.status).toHaveBeenCalledWith(500);
+        expect(res.json).toHaveBeenCalledWith({
+            message: "Error deleting media",
+        });
     });
 });
