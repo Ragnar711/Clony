@@ -84,9 +84,25 @@ const getAnimes = async (req, res) => {
     }
 };
 
+const deleteMedia = async (req, res) => {
+    const prisma = req.app.get("prisma");
+    const id = req.params.id;
+    try {
+        const deleted = await prisma.media.delete({
+            where: {
+                id,
+            },
+        });
+        res.status(200).json(deleted);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
 module.exports = {
     postMedia,
     getMovies,
     getTVShows,
     getAnimes,
+    deleteMedia,
 };
