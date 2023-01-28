@@ -56,6 +56,48 @@ const getMovies = async (req, res) => {
     }
 };
 
+const getActors = async (req, res) => {
+    const prisma = req.app.get("prisma");
+    try {
+        const actors = await prisma.media.findMany({
+            select: {
+                Actor1: true,
+                Actor2: true,
+                Actor3: true,
+                Actor4: true,
+            },
+            where: {
+                OR: [
+                    { Actor1: { not: "" } },
+                    { Actor2: { not: "" } },
+                    { Actor3: { not: "" } },
+                    { Actor4: { not: "" } },
+                ],
+            },
+            groupBy: {
+                Actor1: true,
+                Actor2: true,
+                Actor3: true,
+                Actor4: true,
+            },
+        });
+        /*SELECT Actor1 as actor, COUNT(*) as movies_count FROM media WHERE Actor1 != ""
+        GROUP BY actor1
+        UNION ALL
+        SELECT Actor2 as actor, COUNT(*) as movies_count FROM media WHERE Actor2 != ""
+        GROUP BY Actor2
+        UNION ALL
+        SELECT Actor3 as actor, COUNT(*) as movies_count FROM media WHERE Actor3 != ""
+        GROUP BY Actor3
+        UNION ALL
+        SELECT Actor4 as actor, COUNT(*) as movies_count FROM media WHERE Actor4 != ""
+        GROUP BY Actor4;*/
+        res.status(200).json(actors);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
 const getTVShows = async (req, res) => {
     const prisma = req.app.get("prisma");
     try {
@@ -105,4 +147,5 @@ module.exports = {
     getTVShows,
     getAnimes,
     deleteMedia,
+    getActors,
 };

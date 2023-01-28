@@ -4,6 +4,9 @@ import Axios from "redaxios";
 import { useState, useEffect } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { BiMovie } from "react-icons/bi";
+import { MdOutlineLocalMovies } from "react-icons/md";
+import { RiMovie2Line } from "react-icons/ri";
 
 const Movies = () => {
     const [movies, setMovies] = useState([]);
@@ -73,9 +76,15 @@ const Movies = () => {
                 <div className="moviesContainer">
                     <Tabs variant="soft-rounded" colorScheme="green">
                         <TabList>
-                            <Tab className="tab">Movies</Tab>
-                            <Tab className="tab">TV Shows</Tab>
-                            <Tab className="tab">Animes</Tab>
+                            <Tab className="tab">
+                                <BiMovie /> Movies
+                            </Tab>
+                            <Tab className="tab">
+                                <MdOutlineLocalMovies /> TV Shows
+                            </Tab>
+                            <Tab className="tab">
+                                <RiMovie2Line /> Animes
+                            </Tab>
                         </TabList>
                         <TabPanels>
                             <TabPanel>
