@@ -1,0 +1,50 @@
+.actorsLayout {
+    margin-top: 150px;
+}
+
+.actorsLayout > h1 {
+    margin-block: 50px;
+}
+
+/*.download-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.download-button {
+    margin-right: 0.5rem;
+}
+
+.column-toggle {
+    text-transform: capitalize;
+}
+
+.table {
+    width: 100%;
+    margin-top: 200px;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #ddd;
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.columnDrop {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    text-decoration: none;
+    padding: 5px;
+    border-bottom: 1mm solid black;
+}*/

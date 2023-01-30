@@ -21,7 +21,14 @@ function Header() {
             >
                 Medias
             </span>
-            <span className="nav-item">Actors</span>
+            <span
+                className="nav-item"
+                onClick={() => {
+                    navigate("/Actors");
+                }}
+            >
+                Actors
+            </span>
             <span className="nav-item">Stats</span>
         </div>
     );
