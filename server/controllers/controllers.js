@@ -49,6 +49,9 @@ const getMovies = async (req, res) => {
             where: {
                 MediaType: "Movie",
             },
+            orderBy: {
+                Year: "desc",
+            },
         });
         res.status(200).json(Movies);
     } catch (err) {
@@ -63,6 +66,9 @@ const getTVShows = async (req, res) => {
             where: {
                 MediaType: "TV Show",
             },
+            orderBy: {
+                Year: "desc",
+            },
         });
         res.status(200).json(TVShows);
     } catch (err) {
@@ -76,6 +82,9 @@ const getAnimes = async (req, res) => {
         const Animes = await prisma.media.findMany({
             where: {
                 MediaType: "Anime",
+            },
+            orderBy: {
+                Year: "desc",
             },
         });
         res.status(200).json(Animes);
@@ -103,12 +112,8 @@ const getActors = async (req, res) => {
     const prisma = req.app.get("prisma");
     try {
         const actors =
-            await prisma.$queryRaw`SELECT Actor1 as actor, COUNT(*) as movies_count_str FROM media WHERE Actor1 != "" GROUP BY Actor1 UNION ALL  SELECT Actor2 as actor, COUNT(*) as movies_count_str FROM media WHERE Actor2 != "" GROUP BY Actor2 UNION ALL  SELECT Actor3 as actor, COUNT(*) as movies_count_str FROM media WHERE Actor3 != "" GROUP BY Actor3 UNION ALL  SELECT Actor4 as actor, COUNT(*) as movies_count_str FROM media WHERE Actor4 != "" GROUP BY Actor4;`;
-        const parsedActors = actors.map((actor) => ({
-            actor: actor.actor,
-            movies_count: parseInt(actor.movies_count_str, 10),
-        }));
-        res.status(200).json(parsedActors);
+            await prisma.$queryRaw`SELECT actor, SUM(medias) as movies_count FROM (SELECT Actor1 as actor, COUNT(*) as medias FROM media WHERE Actor1 != "" GROUP BY actor1 UNION ALL SELECT Actor2 as actor, COUNT(*) as medias FROM media WHERE Actor2 != "" GROUP BY Actor2 UNION ALL SELECT Actor3 as actor, COUNT(*) as medias FROM media WHERE Actor3 != "" GROUP BY Actor3 UNION ALL SELECT Actor4 as actor, COUNT(*) as medias FROM media WHERE Actor4 != "" GROUP BY Actor4) t GROUP BY actor ORDER BY movies_count DESC;`;
+        res.status(200).json(actors);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

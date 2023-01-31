@@ -8,6 +8,7 @@ const prisma = {
         create: jest.fn(),
         findMany: jest.fn(),
     },
+    $queryRaw: jest.fn(),
 };
 const app = makeApp(prisma);
 const db = prisma.media;
@@ -89,6 +90,7 @@ describe("Get /movies", () => {
         expect(db.findMany).toHaveBeenCalled();
         expect(db.findMany).toHaveBeenCalledWith({
             where: { MediaType: "Movie" },
+            orderBy: { Year: "desc" },
         });
     });
     test("should return an error when the database call fails", async () => {
@@ -172,5 +174,40 @@ describe("deleteMedia", () => {
         expect(res.json).toHaveBeenCalledWith({
             message: "Error deleting media",
         });
+    });
+});
+
+describe("getActors", () => {
+    test("should return a list of actors and the number of movies they have appeared in", async () => {
+        prisma.$queryRaw.mockResolvedValue([
+            {
+                actor: "Christian Bale",
+                movies_count: "3",
+            },
+            {
+                actor: "Tom Hanks",
+                movies_count: "2",
+            },
+            {
+                actor: "Angelina Jolie",
+                movies_count: "2",
+            },
+        ]);
+        const res = await request(app).get("/getActors");
+        expect(res.statusCode).toEqual(200);
+        expect(res.body).toEqual([
+            {
+                actor: "Christian Bale",
+                movies_count: "3",
+            },
+            {
+                actor: "Tom Hanks",
+                movies_count: "2",
+            },
+            {
+                actor: "Angelina Jolie",
+                movies_count: "2",
+            },
+        ]);
     });
 });
