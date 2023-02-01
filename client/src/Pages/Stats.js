@@ -9,7 +9,7 @@ import {
     Legend,
 } from "recharts";
 import "./stats.css";
-import Header from "../Components/Header";
+import Example from "../Components/PieChart";
 import { Grid, GridItem } from "@chakra-ui/react";
 import Axios from "redaxios";
 
@@ -81,7 +81,6 @@ const Stats = () => {
     }, []);
     return (
         <div className="stats">
-            <Header />
             <div className="stats-container">
                 <h1>Statistics</h1>
                 <Grid
@@ -92,6 +91,7 @@ const Stats = () => {
                 >
                     <GridItem rowSpan={2} colSpan={1} bg="papayawhip">
                         <h3>Movies per genre</h3>
+                        <Example />
                     </GridItem>
                     <GridItem colSpan={2} bg="papayawhip">
                         <h3>Movies</h3>
@@ -122,8 +122,8 @@ const Stats = () => {
                     <GridItem colSpan={4} bg="papayawhip">
                         <h3>Medias per year</h3>
                         <LineChart
-                            width={500}
-                            height={300}
+                            width={1000}
+                            height={500}
                             data={chartData}
                             margin={{
                                 top: 5,
@@ -131,6 +131,7 @@ const Stats = () => {
                                 left: 20,
                                 bottom: 5,
                             }}
+                            className="lineChart"
                         >
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="name" />

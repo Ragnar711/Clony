@@ -1,4 +1,3 @@
-import Header from "../Components/Header";
 import "./movies.css";
 import Axios from "redaxios";
 import { useState, useEffect } from "react";
@@ -68,7 +67,6 @@ const Movies = () => {
     return (
         <ChakraProvider>
             <div className="movies">
-                <Header />
                 <div className="moviesContainer">
                     <Tabs variant="soft-rounded" colorScheme="green">
                         <TabList>

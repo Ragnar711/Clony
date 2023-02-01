@@ -2,7 +2,6 @@ import { useState } from "react";
 import Axios from "redaxios";
 import { Box, TextField, Button, Rating, Typography } from "@mui/material";
 import "./addNew.css";
-import Header from "../Components/Header";
 
 const initialState = {
     Name: "",
@@ -31,7 +30,6 @@ function AddNew() {
     };
     return (
         <div className="AddNewHeader">
-            <Header />
             <div className="AddNew">
                 <Box
                     className="form"
