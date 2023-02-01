@@ -29,7 +29,14 @@ function Header() {
             >
                 Actors
             </span>
-            <span className="nav-item">Stats</span>
+            <span
+                className="nav-item"
+                onClick={() => {
+                    navigate("/Stats");
+                }}
+            >
+                Stats
+            </span>
         </div>
     );
 }

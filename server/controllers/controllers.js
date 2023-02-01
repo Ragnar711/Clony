@@ -38,7 +38,7 @@ const postMedia = async (req, res) => {
         });
         res.status(201).json(newMedia);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json(err.message);
     }
 };
 
@@ -55,7 +55,7 @@ const getMovies = async (req, res) => {
         });
         res.status(200).json(Movies);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json(err.message);
     }
 };
 
@@ -72,7 +72,7 @@ const getTVShows = async (req, res) => {
         });
         res.status(200).json(TVShows);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json(err.message);
     }
 };
 
@@ -89,7 +89,7 @@ const getAnimes = async (req, res) => {
         });
         res.status(200).json(Animes);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json(err.message);
     }
 };
 
@@ -104,7 +104,7 @@ const deleteMedia = async (req, res) => {
         });
         res.status(200).json(deleted);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json(err.message);
     }
 };
 
@@ -115,7 +115,19 @@ const getActors = async (req, res) => {
             await prisma.$queryRaw`SELECT actor, SUM(medias) as movies_count FROM (SELECT Actor1 as actor, COUNT(*) as medias FROM media WHERE Actor1 != "" GROUP BY actor1 UNION ALL SELECT Actor2 as actor, COUNT(*) as medias FROM media WHERE Actor2 != "" GROUP BY Actor2 UNION ALL SELECT Actor3 as actor, COUNT(*) as medias FROM media WHERE Actor3 != "" GROUP BY Actor3 UNION ALL SELECT Actor4 as actor, COUNT(*) as medias FROM media WHERE Actor4 != "" GROUP BY Actor4) t GROUP BY actor ORDER BY movies_count DESC;`;
         res.status(200).json(actors);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(500).json(err.message);
+    }
+};
+
+const getMoviesCount = async (req, res) => {
+    const prisma = req.app.get("prisma");
+    const MediaType = "Movie";
+    try {
+        const moviesCount =
+            await prisma.$queryRaw`SELECT CAST(COUNT(*) AS CHAR) AS NumberOfMovies FROM media WHERE MediaType = ${MediaType}`;
+        res.status(200).json(moviesCount);
+    } catch (err) {
+        res.status(500).json(err.message);
     }
 };
 
@@ -126,4 +138,5 @@ module.exports = {
     getAnimes,
     deleteMedia,
     getActors,
+    getMoviesCount,
 };

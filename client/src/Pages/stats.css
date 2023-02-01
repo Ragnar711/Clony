@@ -1,0 +1,28 @@
+.stats-container {
+    margin-top: 7.5%;
+}
+
+.movies-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.movies-stats > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movies-stats > div > span {
+    border: 2px solid black;
+    border-radius: 25px;
+    height: 3rem;
+    width: 10rem;
+    background-color: white;
+    color: black;
+    margin-block: 1rem;
+    font-size: 2rem;
+}
