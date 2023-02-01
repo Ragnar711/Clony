@@ -24,8 +24,6 @@ const Movies = () => {
                 setError(error);
                 setLoading(false);
             });
-    }, []);
-    useEffect(() => {
         Axios.get("http://localhost:8080/getAnimes")
             .then((response) => {
                 setAnimes(response.data);
@@ -35,8 +33,6 @@ const Movies = () => {
                 setError(error);
                 setLoading(false);
             });
-    }, []);
-    useEffect(() => {
         Axios.get("http://localhost:8080/getTVShows")
             .then((response) => {
                 setTvshows(response.data);

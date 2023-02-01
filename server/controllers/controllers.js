@@ -131,6 +131,42 @@ const getMoviesCount = async (req, res) => {
     }
 };
 
+const getYearlyMoviesCount = async (req, res) => {
+    const prisma = req.app.get("prisma");
+    const MediaType = "Movie";
+    try {
+        const yearlyMoviesCount =
+            await prisma.$queryRaw`SELECT CAST(COUNT(*) AS CHAR) AS YearlyNumberOfMovies FROM media WHERE MediaType = ${MediaType} AND YEAR >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)`;
+        res.status(200).json(yearlyMoviesCount);
+    } catch (err) {
+        res.status(500).json(err.message);
+    }
+};
+
+const getTVShowsCount = async (req, res) => {
+    const prisma = req.app.get("prisma");
+    const MediaType = "TV Show";
+    try {
+        const tvShowsCount =
+            await prisma.$queryRaw`SELECT CAST(COUNT(*) AS CHAR) AS numberOfTVShows FROM media WHERE MediaType = ${MediaType}`;
+        res.status(200).json(tvShowsCount);
+    } catch (err) {
+        res.status(500).json(err.message);
+    }
+};
+
+const getAnimesCount = async (req, res) => {
+    const prisma = req.app.get("prisma");
+    const MediaType = "Anime";
+    try {
+        const animesCount =
+            await prisma.$queryRaw`SELECT CAST(COUNT(*) AS CHAR) AS numberOfAnimes FROM media WHERE MediaType = ${MediaType}`;
+        res.status(200).json(animesCount);
+    } catch (err) {
+        res.status(500).json(err.message);
+    }
+};
+
 module.exports = {
     postMedia,
     getMovies,
@@ -139,4 +175,7 @@ module.exports = {
     deleteMedia,
     getActors,
     getMoviesCount,
+    getYearlyMoviesCount,
+    getTVShowsCount,
+    getAnimesCount,
 };
