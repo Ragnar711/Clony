@@ -66,129 +66,127 @@ const Movies = () => {
     }
     return (
         <ChakraProvider>
-            <div className="movies">
-                <div className="moviesContainer">
-                    <Tabs variant="soft-rounded" colorScheme="green">
-                        <TabList>
-                            <Tab className="tab">
-                                <BiMovie /> Movies
-                            </Tab>
-                            <Tab className="tab">
-                                <MdOutlineLocalMovies /> TV Shows
-                            </Tab>
-                            <Tab className="tab">
-                                <RiMovie2Line /> Animes
-                            </Tab>
-                        </TabList>
-                        <TabPanels>
-                            <TabPanel>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Year</th>
-                                            <th>Rating</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {movies.map((item) => {
-                                            return (
-                                                <tr key={item.id}>
-                                                    <td>{item.Name}</td>
-                                                    <td>{item.Year}</td>
-                                                    <td>{item.Review}</td>
-                                                    <td>
-                                                        <button
-                                                            className="deleteMovie"
-                                                            onClick={() => {
-                                                                deleteMedia(
-                                                                    item.id
-                                                                );
-                                                            }}
-                                                        >
-                                                            Delete
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        })}
-                                    </tbody>
-                                </table>
-                            </TabPanel>
-                            <TabPanel>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Year</th>
-                                            <th>Rating</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {tvshows.map((item) => {
-                                            return (
-                                                <tr key={item.id}>
-                                                    <td>{item.Name}</td>
-                                                    <td>{item.Year}</td>
-                                                    <td>{item.Review}</td>
-                                                    <td>
-                                                        <button
-                                                            className="deleteMovie"
-                                                            onClick={() => {
-                                                                deleteMedia(
-                                                                    item.id
-                                                                );
-                                                            }}
-                                                        >
-                                                            Delete
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        })}
-                                    </tbody>
-                                </table>
-                            </TabPanel>
-                            <TabPanel>
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Year</th>
-                                            <th>Rating</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {animes.map((item) => {
-                                            return (
-                                                <tr key={item.id}>
-                                                    <td>{item.Name}</td>
-                                                    <td>{item.Year}</td>
-                                                    <td>{item.Review}</td>
-                                                    <td>
-                                                        <button
-                                                            className="deleteMovie"
-                                                            onClick={() => {
-                                                                deleteMedia(
-                                                                    item.id
-                                                                );
-                                                            }}
-                                                        >
-                                                            Delete
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        })}
-                                    </tbody>
-                                </table>
-                            </TabPanel>
-                        </TabPanels>
-                    </Tabs>
-                </div>
+            <div className="moviesLayout">
+                <Tabs variant="soft-rounded" colorScheme="green">
+                    <TabList>
+                        <Tab className="tab">
+                            <BiMovie /> Movies
+                        </Tab>
+                        <Tab className="tab">
+                            <MdOutlineLocalMovies /> TV Shows
+                        </Tab>
+                        <Tab className="tab">
+                            <RiMovie2Line /> Animes
+                        </Tab>
+                    </TabList>
+                    <TabPanels>
+                        <TabPanel>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Year</th>
+                                        <th>Rating</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {movies.map((item) => {
+                                        return (
+                                            <tr key={item.id}>
+                                                <td>{item.Name}</td>
+                                                <td>{item.Year}</td>
+                                                <td>{item.Review}</td>
+                                                <td>
+                                                    <button
+                                                        className="deleteMovie"
+                                                        onClick={() => {
+                                                            deleteMedia(
+                                                                item.id
+                                                            );
+                                                        }}
+                                                    >
+                                                        Delete
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        </TabPanel>
+                        <TabPanel>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Year</th>
+                                        <th>Rating</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {tvshows.map((item) => {
+                                        return (
+                                            <tr key={item.id}>
+                                                <td>{item.Name}</td>
+                                                <td>{item.Year}</td>
+                                                <td>{item.Review}</td>
+                                                <td>
+                                                    <button
+                                                        className="deleteMovie"
+                                                        onClick={() => {
+                                                            deleteMedia(
+                                                                item.id
+                                                            );
+                                                        }}
+                                                    >
+                                                        Delete
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        </TabPanel>
+                        <TabPanel>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Year</th>
+                                        <th>Rating</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {animes.map((item) => {
+                                        return (
+                                            <tr key={item.id}>
+                                                <td>{item.Name}</td>
+                                                <td>{item.Year}</td>
+                                                <td>{item.Review}</td>
+                                                <td>
+                                                    <button
+                                                        className="deleteMovie"
+                                                        onClick={() => {
+                                                            deleteMedia(
+                                                                item.id
+                                                            );
+                                                        }}
+                                                    >
+                                                        Delete
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        </TabPanel>
+                    </TabPanels>
+                </Tabs>
             </div>
         </ChakraProvider>
     );

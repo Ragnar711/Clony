@@ -29,112 +29,110 @@ function AddNew() {
         }
     };
     return (
-        <div className="AddNewHeader">
-            <div className="AddNew">
+        <div className="AddNewLayout">
+            <Box
+                className="form"
+                component="form"
+                sx={{
+                    "& > :not(style)": { m: 1, width: "25ch" },
+                }}
+                noValidate
+                autoComplete="off"
+            >
+                <h1 className="addNewHeader">Add New Media</h1>
+                <div className="firstRow">
+                    <div>
+                        <TextField
+                            className="input"
+                            name="Name"
+                            label="Name"
+                            variant="outlined"
+                            onChange={handleChange}
+                        />
+                        <p className="error"></p>
+                    </div>
+                    <div>
+                        <TextField
+                            className="input"
+                            name="Year"
+                            label="Year"
+                            variant="outlined"
+                            onChange={handleChange}
+                        />
+                        <p className="error"></p>
+                    </div>
+                    <div>
+                        <TextField
+                            className="input"
+                            name="MediaType"
+                            label="Media Type"
+                            variant="outlined"
+                            onChange={handleChange}
+                        />
+                        <p className="error"></p>
+                    </div>
+                </div>
                 <Box
-                    className="form"
-                    component="form"
                     sx={{
-                        "& > :not(style)": { m: 1, width: "25ch" },
+                        "& > legend": { mt: 2 },
                     }}
-                    noValidate
-                    autoComplete="off"
+                    className="rating"
                 >
-                    <h1 id="addNewHeader">Add New Media</h1>
-                    <div className="firstRow">
-                        <div>
-                            <TextField
-                                className="input"
-                                name="Name"
-                                label="Name"
-                                variant="outlined"
-                                onChange={handleChange}
-                            />
-                            <p className="error"></p>
-                        </div>
-                        <div>
-                            <TextField
-                                className="input"
-                                name="Year"
-                                label="Year"
-                                variant="outlined"
-                                onChange={handleChange}
-                            />
-                            <p className="error"></p>
-                        </div>
-                        <div>
-                            <TextField
-                                className="input"
-                                name="MediaType"
-                                label="Media Type"
-                                variant="outlined"
-                                onChange={handleChange}
-                            />
-                            <p className="error"></p>
-                        </div>
-                    </div>
-                    <Box
-                        sx={{
-                            "& > legend": { mt: 2 },
-                        }}
-                        className="rating"
-                    >
-                        <Typography component="legend">Rating</Typography>
-                        <Rating
-                            className="stars"
-                            name="Review"
-                            onChange={handleChange}
-                        />
-                    </Box>
-                    <div className="director">
-                        <TextField
-                            className="input"
-                            name="Director"
-                            label="Director"
-                            variant="outlined"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div className="actors">
-                        <TextField
-                            className="input"
-                            name="Actor1"
-                            label="Actor 1"
-                            variant="outlined"
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            className="input"
-                            name="Actor2"
-                            label="Actor 2"
-                            variant="outlined"
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            className="input"
-                            id="outlined-basic"
-                            label="Actor 3"
-                            variant="outlined"
-                            onChange={handleChange}
-                        />
-                        <TextField
-                            className="input"
-                            id="outlined-basic"
-                            label="Actor 4"
-                            variant="outlined"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <Button
-                        variant="contained"
-                        onClick={() => {
-                            submitMedia();
-                        }}
-                    >
-                        Add Media
-                    </Button>
+                    <Typography component="legend">Rating</Typography>
+                    <Rating
+                        className="stars"
+                        name="Review"
+                        onChange={handleChange}
+                    />
                 </Box>
-            </div>
+                <div className="director">
+                    <TextField
+                        className="input"
+                        name="Director"
+                        label="Director"
+                        variant="outlined"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="actors">
+                    <TextField
+                        className="input"
+                        name="Actor1"
+                        label="Actor 1"
+                        variant="outlined"
+                        onChange={handleChange}
+                    />
+                    <TextField
+                        className="input"
+                        name="Actor2"
+                        label="Actor 2"
+                        variant="outlined"
+                        onChange={handleChange}
+                    />
+                    <TextField
+                        className="input"
+                        id="outlined-basic"
+                        label="Actor 3"
+                        variant="outlined"
+                        onChange={handleChange}
+                    />
+                    <TextField
+                        className="input"
+                        id="outlined-basic"
+                        label="Actor 4"
+                        variant="outlined"
+                        onChange={handleChange}
+                    />
+                </div>
+                <Button
+                    variant="contained"
+                    onClick={() => {
+                        submitMedia();
+                    }}
+                >
+                    Add Media
+                </Button>
+            </Box>
         </div>
     );
 }

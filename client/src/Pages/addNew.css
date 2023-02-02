@@ -1,16 +1,13 @@
-.AddNewHeader {
+.AddNewLayout {
     height: 100vh;
+    margin-top: 3rem;
     display: flex;
     flex-direction: column;
     background-image: url("../assets/addNewBg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
-.AddNew {
-    height: 100%;
-    margin-top: 150px;
-}
-#addNewHeader {
+.addNewHeader {
     font-size: 2.5rem;
     color: #274c77;
     border: 3px solid black;
@@ -22,8 +19,8 @@
 .form {
     display: flex;
     flex-direction: column;
-    height: 90%;
-    width: 60%;
+    height: 80%;
+    width: 80%;
     margin: auto;
     align-items: center;
     justify-content: center;
@@ -41,7 +38,6 @@
     background-color: white;
     margin-top: 10% !important;
 }
-
 .actors {
     display: flex;
     flex-direction: row;
@@ -49,7 +45,6 @@
     align-items: center;
     width: 60% !important;
 }
-
 .error {
     margin-top: 10px;
     background: hsl(0 100% 50% / 0.2);
@@ -57,11 +52,62 @@
     border-radius: 0.125em;
     padding: 0.5em;
 }
-
 .error:empty {
     display: none;
 }
-
 .firstRow > div {
     margin-right: 25px;
+}
+
+@media screen and (max-width: 768px) {
+    .AddNewLayout {
+        margin-top: 2rem;
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        height: 60%;
+        width: 80%;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border-radius: 50px;
+    }
+}
+@media screen and (max-width: 375px) {
+    .AddNewLayout {
+        margin-top: 5rem;
+        height: 100vh;
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 80%;
+        margin-inline: auto;
+        margin-top: 25px;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border-radius: 25px;
+    }
+    .firstRow {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .actors {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .addNewHeader {
+        font-size: 1rem;
+        color: #274c77;
+        border: 3px solid black;
+        text-shadow: -8px 4px 0px #a3cef1;
+        margin-inline: auto;
+    }
 }

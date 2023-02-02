@@ -8,6 +8,7 @@
         ),
         repeating-linear-gradient(#444cf755, #444cf7);
     margin-top: 5rem;
+    min-height: 100vh;
 }
 
 .actorsLayout > h1 {
