@@ -16,7 +16,6 @@ const Actors = () => {
     }, []);
     return (
         <div className="actorsLayout">
-            <h1>Actors & Actresses</h1>
             <table>
                 <thead>
                     <tr>

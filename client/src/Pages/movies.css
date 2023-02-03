@@ -19,7 +19,8 @@ td {
 
 h1 {
     text-align: center;
-    margin: 20px 0;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
 }
 
 .deleteMovie {

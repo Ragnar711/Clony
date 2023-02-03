@@ -11,7 +11,7 @@ function Header() {
                     navigate("/");
                 }}
             >
-                Add new
+                Add
             </span>
             <span
                 className="nav-item"
