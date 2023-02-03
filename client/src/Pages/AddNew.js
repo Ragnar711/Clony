@@ -111,14 +111,14 @@ function AddNew() {
                     />
                     <TextField
                         className="input"
-                        id="outlined-basic"
+                        name="Actor3"
                         label="Actor 3"
                         variant="outlined"
                         onChange={handleChange}
                     />
                     <TextField
                         className="input"
-                        id="outlined-basic"
+                        name="Actor3"
                         label="Actor 4"
                         variant="outlined"
                         onChange={handleChange}
