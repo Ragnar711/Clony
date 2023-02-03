@@ -36,7 +36,6 @@
 .input {
     height: 50px;
     background-color: white;
-    margin-top: 10% !important;
 }
 .actors {
     display: flex;

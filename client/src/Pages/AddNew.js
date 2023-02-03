@@ -13,6 +13,8 @@ const initialState = {
     Actor2: "",
     Actor3: "",
     Actor4: "",
+    Genre1: "",
+    Genre2: "",
 };
 
 function AddNew() {
@@ -120,6 +122,22 @@ function AddNew() {
                         className="input"
                         name="Actor3"
                         label="Actor 4"
+                        variant="outlined"
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="actors">
+                    <TextField
+                        className="input"
+                        name="Genre1"
+                        label="Genre 1"
+                        variant="outlined"
+                        onChange={handleChange}
+                    />
+                    <TextField
+                        className="input"
+                        name="Genre2"
+                        label="Genre 2"
                         variant="outlined"
                         onChange={handleChange}
                     />

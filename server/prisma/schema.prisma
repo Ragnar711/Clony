@@ -18,4 +18,6 @@ model media {
   Actor3    String? @db.VarChar(255) 
   Actor4    String? @db.VarChar(255) 
   MediaType String? @db.VarChar(255) @default("Other")
+  Genre1    String? @db.VarChar(255)
+  Genre2    String? @db.VarChar(255)
 }

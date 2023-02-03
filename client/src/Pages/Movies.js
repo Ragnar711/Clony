@@ -67,7 +67,7 @@ const Movies = () => {
     return (
         <ChakraProvider>
             <div className="moviesLayout">
-                <Tabs variant="soft-rounded" colorScheme="green">
+                <Tabs variant="soft-rounded" colorScheme="red">
                     <TabList>
                         <Tab className="tab">
                             <BiMovie /> Movies

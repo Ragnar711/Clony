@@ -9,6 +9,8 @@ const postMedia = async (req, res) => {
         Actor2,
         Actor3,
         Actor4,
+        Genre1,
+        Genre2,
     } = req.body;
     const prisma = req.app.get("prisma");
     try {
@@ -25,15 +27,17 @@ const postMedia = async (req, res) => {
         }
         const newMedia = await prisma.media.create({
             data: {
-                Name,
+                Name: Name.trim(),
                 Year: Number(Year),
                 MediaType,
                 Review: Number(Review),
-                Director,
-                Actor1,
-                Actor2,
-                Actor3,
-                Actor4,
+                Director: Director.trim(),
+                Actor1: Actor1.trim(),
+                Actor2: Actor2.trim(),
+                Actor3: Actor3.trim(),
+                Actor4: Actor4.trim(),
+                Genre1: Genre1.trim(),
+                Genre2: Genre2.trim(),
             },
         });
         res.status(201).json(newMedia);

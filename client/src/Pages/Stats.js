@@ -24,35 +24,33 @@ const Stats = () => {
         });
     }, []);
     return (
-        <div className="stats">
-            <div className="stats-container">
-                <h1>Statistics</h1>
-                <div className="container">
-                    <div className="moviesGrid">
-                        <h3>Movies</h3>
-                        <div className="movies-stats">
-                            <div>
-                                <h5>Overall</h5>
-                                <span>{moviesCount}</span>
-                            </div>
-                            <div>
-                                <h5>This Year</h5>
-                                <span>{yearlyMoviesCount}</span>
-                            </div>
+        <div className="stats-container">
+            <h1>Statistics</h1>
+            <div className="container">
+                <div className="moviesGrid">
+                    <h3>Movies</h3>
+                    <div className="movies-stats">
+                        <div>
+                            <h5>Overall</h5>
+                            <span>{moviesCount}</span>
+                        </div>
+                        <div>
+                            <h5>This Year</h5>
+                            <span>{yearlyMoviesCount}</span>
                         </div>
                     </div>
-                    <div className="tvshowsGrid">
-                        {" "}
-                        <h3>TV Shows & Animes</h3>
-                        <div className="movies-stats">
-                            <div>
-                                <h5>TV Shows</h5>
-                                <span>{tvShowsCount}</span>
-                            </div>
-                            <div>
-                                <h5>Animes</h5>
-                                <span>{animesCount}</span>
-                            </div>
+                </div>
+                <div className="tvshowsGrid">
+                    {" "}
+                    <h3>TV Shows & Animes</h3>
+                    <div className="movies-stats">
+                        <div>
+                            <h5>TV Shows</h5>
+                            <span>{tvShowsCount}</span>
+                        </div>
+                        <div>
+                            <h5>Animes</h5>
+                            <span>{animesCount}</span>
                         </div>
                     </div>
                 </div>
