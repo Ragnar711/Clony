@@ -1,6 +1,6 @@
 table {
     background-color: white;
-    width: 80%;
+    width: 100%;
 }
 
 th {
@@ -13,13 +13,6 @@ th {
 td {
     padding: 10px;
     border-bottom: 1px solid #ccc;
-}
-
-h1 {
-    text-align: center;
-    margin-top: 6rem;
-    margin-bottom: 2rem;
-    color: white;
 }
 
 .deleteMovie {
