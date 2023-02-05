@@ -1,6 +1,5 @@
-import React from "react";
-import Axios from "redaxios";
 import { useState, useEffect } from "react";
+import Axios from "redaxios";
 import "./actors.css";
 
 const Actors = () => {

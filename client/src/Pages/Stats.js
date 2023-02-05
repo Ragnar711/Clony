@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import "./stats.css";
+import { useState, useEffect } from "react";
 import Axios from "redaxios";
+import "./stats.css";
 
 const Stats = () => {
     const [moviesCount, setMoviesCount] = useState(0);

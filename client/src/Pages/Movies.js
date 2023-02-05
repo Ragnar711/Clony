@@ -1,11 +1,17 @@
+import {
+    Tabs,
+    TabList,
+    TabPanels,
+    Tab,
+    TabPanel,
+    ChakraProvider,
+} from "@chakra-ui/react";
+import { MdOutlineLocalMovies } from "react-icons/md";
+import { RiMovie2Line } from "react-icons/ri";
+import { BiMovie } from "react-icons/bi";
 import "./movies.css";
 import Axios from "redaxios";
 import { useState, useEffect } from "react";
-import { ChakraProvider } from "@chakra-ui/react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import { BiMovie } from "react-icons/bi";
-import { MdOutlineLocalMovies } from "react-icons/md";
-import { RiMovie2Line } from "react-icons/ri";
 
 const Movies = () => {
     const [movies, setMovies] = useState([]);
