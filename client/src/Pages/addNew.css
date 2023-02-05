@@ -58,23 +58,7 @@
     margin-right: 25px;
 }
 
-@media screen and (max-width: 768px) {
-    .AddNewLayout {
-        margin-top: 2rem;
-    }
-    .form {
-        display: flex;
-        flex-direction: column;
-        height: 60%;
-        width: 80%;
-        margin: auto;
-        align-items: center;
-        justify-content: center;
-        background-color: white;
-        border-radius: 50px;
-    }
-}
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 414px) {
     .AddNewLayout {
         margin-top: 5rem;
         height: max-content;
