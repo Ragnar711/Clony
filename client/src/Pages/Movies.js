@@ -79,7 +79,7 @@ const Movies = () => {
                             <BiMovie /> Movies
                         </Tab>
                         <Tab className="tab">
-                            <MdOutlineLocalMovies /> TV Shows
+                            <MdOutlineLocalMovies /> Shows
                         </Tab>
                         <Tab className="tab">
                             <RiMovie2Line /> Animes

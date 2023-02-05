@@ -77,12 +77,12 @@
 @media screen and (max-width: 375px) {
     .AddNewLayout {
         margin-top: 5rem;
-        height: 100vh;
+        height: max-content;
     }
     .form {
         display: flex;
         flex-direction: column;
-        height: 100%;
+        height: max-content;
         width: 80%;
         margin-inline: auto;
         margin-top: 25px;

@@ -23,9 +23,9 @@ const Actors = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {actors.map((item) => {
+                    {actors.map((item, key) => {
                         return (
-                            <tr>
+                            <tr key={key}>
                                 <td>{item.actor}</td>
                                 <td>{item.movies_count}</td>
                             </tr>
