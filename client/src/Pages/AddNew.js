@@ -51,7 +51,6 @@ function AddNew() {
                             variant="outlined"
                             onChange={handleChange}
                         />
-                        <p className="error"></p>
                     </div>
                     <div>
                         <TextField
@@ -61,7 +60,6 @@ function AddNew() {
                             variant="outlined"
                             onChange={handleChange}
                         />
-                        <p className="error"></p>
                     </div>
                     <div>
                         <TextField
@@ -71,7 +69,6 @@ function AddNew() {
                             variant="outlined"
                             onChange={handleChange}
                         />
-                        <p className="error"></p>
                     </div>
                 </div>
                 <Box

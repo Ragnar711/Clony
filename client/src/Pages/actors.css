@@ -1,30 +1,14 @@
 .actorsLayout {
-    background: #355c7d; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-        to right,
-        #c06c84,
-        #6c5b7b,
-        #355c7d
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-        to right,
-        #c06c84,
-        #6c5b7b,
-        #355c7d
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    opacity: 0.5;
+    background: linear-gradient(to right, #c06c84, #6c5b7b, #355c7d);
     margin-top: 5rem;
     min-height: 100vh;
+    opacity: 0.5;
     padding: 25px;
-}
-
-.actorsLayout > h1 {
-    padding-block: 3rem;
 }
 
 .actorsLayout > table {
     background-color: white;
     border-collapse: collapse;
-    width: 80%;
     margin: auto;
+    width: 80%;
 }

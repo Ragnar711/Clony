@@ -6,49 +6,37 @@ table {
 th {
     background-color: #f7f7f7;
     font-weight: bold;
-    text-align: center;
     padding: 10px;
+    text-align: center;
 }
 
 td {
-    padding: 10px;
     border-bottom: 1px solid #ccc;
+    padding: 10px;
 }
 
 .deleteMovie {
-    cursor: pointer;
     background-color: #4caf50;
-    color: white;
     border: none;
-    padding: 8px 16px;
-    text-align: center;
-    text-decoration: none;
+    color: white;
+    cursor: pointer;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
 }
 
 .moviesLayout {
-    opacity: 0.5;
-    background: #355c7d; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-        to right,
-        #c06c84,
-        #6c5b7b,
-        #355c7d
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-        to right,
-        #c06c84,
-        #6c5b7b,
-        #355c7d
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #c06c84, #6c5b7b, #355c7d);
     margin-top: 5rem;
     min-height: 100vh;
+    opacity: 0.5;
     padding: 25px;
 }
 
 .tab {
-    font-weight: bold;
     color: white;
+    font-weight: bold;
 }
