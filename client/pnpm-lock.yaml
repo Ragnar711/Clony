@@ -5,6 +5,7 @@ specifiers:
   '@emotion/react': ^11.10.5
   '@emotion/styled': ^11.10.5
   '@mui/material': ^5.11.3
+  '@mui/x-data-grid': ^5.17.22
   '@testing-library/jest-dom': ^5.14.1
   '@testing-library/react': ^13.0.0
   '@testing-library/user-event': ^13.2.1
@@ -17,6 +18,7 @@ specifiers:
   react-icons: ^4.7.1
   react-router-dom: ^6.6.1
   react-scripts: 5.0.1
+  react-scroll: ^1.8.9
   recharts: ^2.3.2
   redaxios: ^0.5.1
   web-vitals: ^2.1.0
@@ -26,6 +28,7 @@ dependencies:
   '@emotion/react': 11.10.5_react@18.2.0
   '@emotion/styled': 11.10.5_hp5f5nkljdiwilp4rgxyefcplu
   '@mui/material': 5.11.6_5rzy53przelm5jchjmb5vr6dxy
+  '@mui/x-data-grid': 5.17.22_w565vowpfjpshkp4madfaarzue
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': 13.5.0
@@ -38,6 +41,7 @@ dependencies:
   react-icons: 4.7.1_react@18.2.0
   react-router-dom: 6.7.0_biqbaboplfbrettd7655fr4n2y
   react-scripts: 5.0.1_react@18.2.0
+  react-scroll: 1.8.9_biqbaboplfbrettd7655fr4n2y
   recharts: 2.3.2_biqbaboplfbrettd7655fr4n2y
   redaxios: 0.5.1
   web-vitals: 2.1.4
@@ -3417,6 +3421,25 @@ packages:
       prop-types: 15.8.1
       react: 18.2.0
       react-is: 18.2.0
+    dev: false
+
+  /@mui/x-data-grid/5.17.22_w565vowpfjpshkp4madfaarzue:
+    resolution: {integrity: sha512-75nc+BL5G8/KzMOBl7NQ622D9n6mLx3tsRnF0HmccGYLMrZ7jlBMz50M9thrDee7b27CsrZolay7tq+cPFrq4Q==}
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@mui/material': ^5.4.1
+      '@mui/system': ^5.4.1
+      react: ^17.0.2 || ^18.0.0
+      react-dom: ^17.0.2 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.20.13
+      '@mui/material': 5.11.6_5rzy53przelm5jchjmb5vr6dxy
+      '@mui/utils': 5.11.2_react@18.2.0
+      clsx: 1.2.1
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      reselect: 4.1.7
     dev: false
 
   /@nicolo-ribaudo/eslint-scope-5-internals/5.1.1-v1:
@@ -8699,6 +8722,10 @@ packages:
     resolution: {integrity: sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==}
     dev: false
 
+  /lodash.throttle/4.1.1:
+    resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==}
+    dev: false
+
   /lodash.uniq/4.5.0:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
     dev: false
@@ -11070,6 +11097,18 @@ packages:
       - webpack-plugin-serve
     dev: false
 
+  /react-scroll/1.8.9_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-9m7ztraiX/l6L7erzYAD3fhnveNckei6/NkWfqwN2e0FRdoE2W6Pk4oi2Nah7mWpPCPAeIgegfaqZACTimPOwg==}
+    peerDependencies:
+      react: ^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      lodash.throttle: 4.1.1
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
   /react-smooth/2.0.1_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-Own9TA0GPPf3as4vSwFhDouVfXP15ie/wIHklhyKBH5AN6NFtdk0UpHBnonV11BtqDkAWlt40MOUc+5srmW7NA==}
     peerDependencies:
@@ -11310,6 +11349,10 @@ packages:
 
   /requires-port/1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
+    dev: false
+
+  /reselect/4.1.7:
+    resolution: {integrity: sha512-Zu1xbUt3/OPwsXL46hvOOoQrap2azE7ZQbokq61BQfiXvhewsKDwhMeZjTX9sX0nvw1t/U5Audyn1I9P/m9z0A==}
     dev: false
 
   /resize-observer-polyfill/1.5.1:

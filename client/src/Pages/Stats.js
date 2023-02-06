@@ -7,6 +7,7 @@ const Stats = () => {
     const [yearlyMoviesCount, setYearlyMoviesCount] = useState(0);
     const [tvShowsCount, setTVShowsCount] = useState(0);
     const [animesCount, setAnimesCount] = useState(0);
+    const [directors, setDirectors] = useState([]);
     useEffect(() => {
         Axios.get("http://localhost:8080/getMoviesCount").then((response) => {
             setMoviesCount(response.data[0].NumberOfMovies);
@@ -22,10 +23,17 @@ const Stats = () => {
         Axios.get("http://localhost:8080/getAnimesCount").then((response) => {
             setAnimesCount(response.data[0].numberOfAnimes);
         });
+        Axios.get("http://localhost:8080/getDirectors")
+            .then((response) => {
+                setDirectors(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }, []);
     return (
         <div className="stats-container">
-            <div className="moviesGrid">
+            <div id="nums" className="moviesGrid">
                 <h3>Movies</h3>
                 <div className="movies-stats">
                     <div>
@@ -39,7 +47,6 @@ const Stats = () => {
                 </div>
             </div>
             <div className="tvshowsGrid">
-                {" "}
                 <h3>TV Shows & Animes</h3>
                 <div className="movies-stats">
                     <div>
@@ -51,6 +58,26 @@ const Stats = () => {
                         <span>{animesCount}</span>
                     </div>
                 </div>
+            </div>
+            <div id="dirc" className="directorsGrid">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Director</th>
+                            <th>Number of Medias</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {directors.map((item, key) => {
+                            return (
+                                <tr key={key}>
+                                    <td>{item.director}</td>
+                                    <td>{item.movies_count}</td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
             </div>
         </div>
     );

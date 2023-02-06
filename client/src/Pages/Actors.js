@@ -18,7 +18,7 @@ const Actors = () => {
             <table>
                 <thead>
                     <tr>
-                        <th>Actors</th>
+                        <th>Actor</th>
                         <th>Number of media</th>
                     </tr>
                 </thead>

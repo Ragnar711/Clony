@@ -7,6 +7,7 @@ const {
     getAnimes,
     deleteMedia,
     getActors,
+    getDirectors,
     getMoviesCount,
     getYearlyMoviesCount,
     getTVShowsCount,
@@ -19,6 +20,7 @@ router.get("/getTVShows", getTVShows);
 router.get("/getAnimes", getAnimes);
 router.delete("/deleteMedia/:id", deleteMedia);
 router.get("/getActors", getActors);
+router.get("/getDirectors", getDirectors);
 router.get("/getMoviesCount", getMoviesCount);
 router.get("/getYearlyMoviesCount", getYearlyMoviesCount);
 router.get("/getTVShowsCount", getTVShowsCount);
