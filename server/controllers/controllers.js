@@ -134,6 +134,30 @@ const getDirectors = async (req, res) => {
     }
 };
 
+const getGenres = async (req, res) => {
+    const prisma = req.app.get("prisma");
+    try {
+        const rows = await prisma.$queryRaw`SELECT Genre1, Genre2 FROM media`;
+        const genres = {};
+        for (const row of rows) {
+            for (const genre of Object.values(row)) {
+                if (genres[genre]) {
+                    genres[genre] += 1;
+                } else {
+                    genres[genre] = 1;
+                }
+            }
+        }
+        const data = [];
+        for (const [genre, count] of Object.entries(genres)) {
+            data.push({ y: count, label: genre });
+        }
+        res.json(data);
+    } catch (error) {
+        res.status(500).json(error.message);
+    }
+};
+
 const getMoviesCount = async (req, res) => {
     const prisma = req.app.get("prisma");
     const MediaType = "Movie";
@@ -190,6 +214,7 @@ module.exports = {
     deleteMedia,
     getActors,
     getDirectors,
+    getGenres,
     getMoviesCount,
     getYearlyMoviesCount,
     getTVShowsCount,
