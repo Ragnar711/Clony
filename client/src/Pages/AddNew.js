@@ -24,6 +24,13 @@ function AddNew() {
     };
     const submitMedia = async () => {
         try {
+            const mediaTypes = ["Movie", "TV Show", "Anime"];
+            if (!mediaTypes.includes(form.MediaType)) {
+                return window.alert("Wrong media type");
+            }
+            if (form.Year < 1900 || form.Year > new Date().getFullYear()) {
+                return window.alert("Please Enter a Valid Year");
+            }
             await Axios.post("http://localhost:8080/postMedia", form);
             window.location.reload();
         } catch (err) {
