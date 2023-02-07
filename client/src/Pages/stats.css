@@ -1,3 +1,20 @@
+table {
+    background-color: white;
+    width: 100%;
+}
+
+th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+td {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
 .movies-stats {
     align-items: center;
     display: flex;
@@ -25,16 +42,16 @@
 .stats-container {
     background: linear-gradient(to right, #c06c84, #6c5b7b, #355c7d);
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 4fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 3fr;
     gap: 5px 5px;
     grid-auto-flow: row;
-    grid-template-areas: "moviesGrid moviesGrid tvshowsGrid tvshowsGrid" "directorsGrid directorsGrid directorsGrid directorsGrid";
-    height: 100vh;
+    grid-template-areas: "moviesGrid tvshowsGrid" "pieGrid directorsGrid";
+    height: max-content;
     margin-top: 5rem;
     opacity: 0.5;
     padding: 25px;
-    width: 100%;
+    height: 100vh;
 }
 
 .moviesGrid {
@@ -49,11 +66,16 @@
     padding: 25px;
 }
 
+.pieGrid {
+    background-color: antiquewhite;
+    grid-area: pieGrid;
+    padding: 25px;
+}
+
 .directorsGrid {
     background-color: antiquewhite;
     display: flex;
     grid-area: directorsGrid;
-    height: max-content;
     justify-content: center;
     padding: 25px;
 }
@@ -65,12 +87,15 @@ h3 {
 @media screen and (max-width: 600px) {
     .stats-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: max-content max-content;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 2fr 2fr;
         gap: 5px 5px;
         grid-auto-flow: row;
         grid-template-areas:
-            "moviesGrid moviesGrid"
-            "tvshowsGrid tvshowsGrid";
+            "moviesGrid"
+            "tvshowsGrid"
+            "directorsGrid"
+            "pieGrid";
+        height: max-content;
     }
 }

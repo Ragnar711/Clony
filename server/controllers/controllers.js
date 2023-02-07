@@ -20,10 +20,9 @@ const postMedia = async (req, res) => {
             },
         });
         if (mediaExists) {
-            res.status(400).json({
+            return res.status(400).json({
                 message: "Media already exists",
             });
-            return;
         }
         const newMedia = await prisma.media.create({
             data: {
@@ -40,16 +39,16 @@ const postMedia = async (req, res) => {
                 Genre2: Genre2.trim(),
             },
         });
-        res.status(201).json(newMedia);
+        return res.status(201).json(newMedia);
     } catch (err) {
-        res.status(500).json(err.message);
+        return res.status(500).json({ error: err.message });
     }
 };
 
 const getMovies = async (req, res) => {
     const prisma = req.app.get("prisma");
     try {
-        const Movies = await prisma.media.findMany({
+        const movies = await prisma.media.findMany({
             where: {
                 MediaType: "Movie",
             },
@@ -57,16 +56,16 @@ const getMovies = async (req, res) => {
                 Year: "desc",
             },
         });
-        res.status(200).json(Movies);
+        return res.status(200).json(movies);
     } catch (err) {
-        res.status(500).json(err.message);
+        return res.status(500).json({ error: err.message });
     }
 };
 
 const getTVShows = async (req, res) => {
     const prisma = req.app.get("prisma");
     try {
-        const TVShows = await prisma.media.findMany({
+        const tvShows = await prisma.media.findMany({
             where: {
                 MediaType: "TV Show",
             },
@@ -74,16 +73,16 @@ const getTVShows = async (req, res) => {
                 Year: "desc",
             },
         });
-        res.status(200).json(TVShows);
+        return res.status(200).json(tvShows);
     } catch (err) {
-        res.status(500).json(err.message);
+        return res.status(500).json({ error: err.message });
     }
 };
 
 const getAnimes = async (req, res) => {
     const prisma = req.app.get("prisma");
     try {
-        const Animes = await prisma.media.findMany({
+        const animes = await prisma.media.findMany({
             where: {
                 MediaType: "Anime",
             },
@@ -91,9 +90,9 @@ const getAnimes = async (req, res) => {
                 Year: "desc",
             },
         });
-        res.status(200).json(Animes);
+        return res.status(200).json(animes);
     } catch (err) {
-        res.status(500).json(err.message);
+        return res.status(500).json({ error: err.message });
     }
 };
 
@@ -106,9 +105,9 @@ const deleteMedia = async (req, res) => {
                 id,
             },
         });
-        res.status(200).json(deleted);
+        return res.status(200).json({ deleted });
     } catch (err) {
-        res.status(500).json(err.message);
+        return res.status(500).json({ error: err.message });
     }
 };
 
@@ -117,9 +116,9 @@ const getActors = async (req, res) => {
     try {
         const actors =
             await prisma.$queryRaw`SELECT actor, SUM(medias) as movies_count FROM (SELECT Actor1 as actor, COUNT(*) as medias FROM media WHERE Actor1 != "" GROUP BY actor1 UNION ALL SELECT Actor2 as actor, COUNT(*) as medias FROM media WHERE Actor2 != "" GROUP BY Actor2 UNION ALL SELECT Actor3 as actor, COUNT(*) as medias FROM media WHERE Actor3 != "" GROUP BY Actor3 UNION ALL SELECT Actor4 as actor, COUNT(*) as medias FROM media WHERE Actor4 != "" GROUP BY Actor4) t GROUP BY actor ORDER BY movies_count DESC;`;
-        res.status(200).json(actors);
+        return res.status(200).json(actors);
     } catch (err) {
-        res.status(500).json(err.message);
+        return res.status(500).json({ error: err.message });
     }
 };
 
@@ -130,7 +129,7 @@ const getDirectors = async (req, res) => {
             await prisma.$queryRaw`SELECT director, CAST(COUNT(*) AS CHAR) as movies_count FROM media WHERE director != "" GROUP BY director ORDER By movies_count DESC;`;
         res.status(200).json(directors);
     } catch (err) {
-        res.status(500).json(err.message);
+        res.status(500).json({ error: err.message });
     }
 };
 
@@ -141,32 +140,29 @@ const getGenres = async (req, res) => {
         const genres = {};
         for (const row of rows) {
             for (const genre of Object.values(row)) {
-                if (genres[genre]) {
-                    genres[genre] += 1;
-                } else {
-                    genres[genre] = 1;
-                }
+                if (!genre) continue;
+                genres[genre] = (genres[genre] || 0) + 1;
             }
         }
-        const data = [];
-        for (const [genre, count] of Object.entries(genres)) {
-            data.push({ y: count, label: genre });
-        }
-        res.json(data);
+        const data = Object.entries(genres).map(([genre, count]) => ({
+            y: count,
+            label: genre,
+        }));
+        return res.status(200).json(data);
     } catch (error) {
-        res.status(500).json(error.message);
+        return res.status(500).json({ error: error.message });
     }
 };
 
 const getMoviesCount = async (req, res) => {
     const prisma = req.app.get("prisma");
-    const MediaType = "Movie";
     try {
-        const moviesCount =
-            await prisma.$queryRaw`SELECT CAST(COUNT(*) AS CHAR) AS NumberOfMovies FROM media WHERE MediaType = ${MediaType}`;
-        res.status(200).json(moviesCount);
+        const moviesCount = await prisma.media.count({
+            where: { MediaType: "movie" },
+        });
+        return res.status(200).json(moviesCount);
     } catch (err) {
-        res.status(500).json(err.message);
+        return res.status(500).json({ error: err.message });
     }
 };
 
@@ -175,34 +171,34 @@ const getYearlyMoviesCount = async (req, res) => {
     const MediaType = "Movie";
     try {
         const yearlyMoviesCount =
-            await prisma.$queryRaw`SELECT CAST(COUNT(*) AS CHAR) AS YearlyNumberOfMovies FROM media WHERE MediaType = ${MediaType} AND YEAR >= DATE_SUB(CURDATE(), INTERVAL 1 YEAR)`;
-        res.status(200).json(yearlyMoviesCount);
+            await prisma.$queryRaw`SELECT CAST(COUNT(*) AS CHAR) AS YearlyNumberOfMovies FROM media WHERE MediaType = ${MediaType} AND YEAR > YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR))`;
+        return res.status(200).json(yearlyMoviesCount);
     } catch (err) {
-        res.status(500).json(err.message);
+        return res.status(500).json({ error: err.message });
     }
 };
 
 const getTVShowsCount = async (req, res) => {
     const prisma = req.app.get("prisma");
-    const MediaType = "TV Show";
     try {
-        const tvShowsCount =
-            await prisma.$queryRaw`SELECT CAST(COUNT(*) AS CHAR) AS numberOfTVShows FROM media WHERE MediaType = ${MediaType}`;
-        res.status(200).json(tvShowsCount);
+        const tvShowsCount = await prisma.media.count({
+            where: { MediaType: "TV Show" },
+        });
+        return res.status(200).json(tvShowsCount);
     } catch (err) {
-        res.status(500).json(err.message);
+        return res.status(500).json(err.message);
     }
 };
 
 const getAnimesCount = async (req, res) => {
     const prisma = req.app.get("prisma");
-    const MediaType = "Anime";
     try {
-        const animesCount =
-            await prisma.$queryRaw`SELECT CAST(COUNT(*) AS CHAR) AS numberOfAnimes FROM media WHERE MediaType = ${MediaType}`;
-        res.status(200).json(animesCount);
+        const animesCount = await prisma.media.count({
+            where: { MediaType: "Anime" },
+        });
+        return res.status(200).json(animesCount);
     } catch (err) {
-        res.status(500).json(err.message);
+        return res.status(500).json({ error: err.message });
     }
 };
 

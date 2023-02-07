@@ -12,3 +12,20 @@
     margin: auto;
     width: 80%;
 }
+
+table {
+    background-color: white;
+    width: 100%;
+}
+
+th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+td {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}

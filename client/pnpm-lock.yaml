@@ -20,14 +20,10 @@ specifiers:
   typescript: ^4.9.5
 
 dependencies:
-  '@babel/core': 7.20.12
-  '@babel/plugin-syntax-flow': 7.18.6_@babel+core@7.20.12
-  '@babel/plugin-transform-react-jsx': 7.20.13_@babel+core@7.20.12
   '@chakra-ui/react': 2.4.9_dflbh5cstnvpltlwku4roy6dmy
   '@emotion/react': 11.10.5_2exiyaescjxorpwwmy4ejghgte
   '@emotion/styled': 11.10.5_csjd3nthallvoinafcukdmosde
   '@mui/material': 5.11.7_5rzy53przelm5jchjmb5vr6dxy
-  eslint: 8.33.0
   framer-motion: 8.5.5_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -38,6 +34,10 @@ dependencies:
   typescript: 4.9.5
 
 devDependencies:
+  '@babel/core': 7.20.12
+  '@babel/plugin-syntax-flow': 7.18.6_@babel+core@7.20.12
+  '@babel/plugin-transform-react-jsx': 7.20.13_@babel+core@7.20.12
+  eslint: 8.33.0
   eslint-config-react-app: 7.0.1_dxpz3jcqv5aye24rwp3es4iu74
 
 packages:

@@ -27,7 +27,13 @@ function AddNew() {
             await Axios.post("http://localhost:8080/postMedia", form);
             window.location.reload();
         } catch (err) {
-            console.error(err);
+            if (err.status === 400) {
+                window.alert(err.data.message);
+            } else if (err.status >= 500) {
+                window.alert("Internal error");
+            } else {
+                window.alert("Something went wrong");
+            }
         }
     };
     return (
