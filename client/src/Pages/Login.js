@@ -26,17 +26,17 @@ const Login = ({ setShowHeader }) => {
                             <AiFillLock color="white" size={25} />
                         </span>
                         <span className="userNameInput">
-                            <input type="text" placeholder="Password" />
+                            <input type="password" placeholder="Password" />
                         </span>
                     </div>
-                    <Link className="signup" to={"/AddUser"}>
+                    <Link className="signup" to={"/Signup"}>
                         New User? Sign Up
                     </Link>
                 </div>
                 <button
                     className="loginButton"
                     onClick={() => {
-                        navigate("/");
+                        navigate("/Home");
                     }}
                 >
                     Login

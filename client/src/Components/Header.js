@@ -8,7 +8,7 @@ function Header() {
             <span
                 className="nav-item"
                 onClick={() => {
-                    navigate("/");
+                    navigate("/Home");
                 }}
             >
                 Add
@@ -40,7 +40,7 @@ function Header() {
             <span
                 className="nav-item"
                 onClick={() => {
-                    navigate("/Login");
+                    navigate("/");
                 }}
             >
                 Logout

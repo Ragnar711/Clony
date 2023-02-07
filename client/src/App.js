@@ -19,15 +19,15 @@ function App() {
                     {showHeader ? <Header /> : ""}
                     <Routes>
                         <Route
-                            path="/Login"
+                            path="/"
                             element={<Login setShowHeader={setShowHeader} />}
                         />
                         <Route
-                            path="/AddUser"
+                            path="/Signup"
                             element={<AddUser setShowHeader={setShowHeader} />}
                         />
                         <Route
-                            path="/"
+                            path="/Home"
                             element={<AddNew setShowHeader={setShowHeader} />}
                         />
                         <Route
