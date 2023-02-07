@@ -202,6 +202,14 @@ const getAnimesCount = async (req, res) => {
     }
 };
 
+const postUser = async (req, res) => {
+    const prisma = req.app.get("prisma");
+    try {
+    } catch (err) {
+        return res.status(500).json({ error: err.message });
+    }
+};
+
 module.exports = {
     postMedia,
     getMovies,

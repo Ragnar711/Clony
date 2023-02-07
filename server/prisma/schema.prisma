@@ -17,7 +17,14 @@ model media {
   Actor2    String? @db.VarChar(255) 
   Actor3    String? @db.VarChar(255) 
   Actor4    String? @db.VarChar(255) 
-  MediaType String? @db.VarChar(255) @default("Other")
+  MediaType String? @db.VarChar(255)
   Genre1    String? @db.VarChar(255)
   Genre2    String? @db.VarChar(255)
+}
+
+model users {
+  id String @id @default(uuid())
+  username String @unique @db.VarChar(255)
+  email String @unique @db.VarChar(255)
+  password String @db.VarChar(255)
 }
