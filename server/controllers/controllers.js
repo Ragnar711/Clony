@@ -203,8 +203,24 @@ const getAnimesCount = async (req, res) => {
 };
 
 const postUser = async (req, res) => {
+    const { username, email, password } = req.body;
     const prisma = req.app.get("prisma");
     try {
+        const usernameExists = await prisma.users.findUnique({
+            where: { username },
+        });
+        const emailexists = await prisma.users.findUnique({ where: { email } });
+        if (usernameExists || emailexists) {
+            return res.status(400).json({ message: "User already exists" });
+        }
+        const newUser = await prisma.users.create({
+            data: {
+                username,
+                email,
+                password,
+            },
+        });
+        return res.status(201).json({ message: "User created successfully" });
     } catch (err) {
         return res.status(500).json({ error: err.message });
     }
@@ -223,4 +239,5 @@ module.exports = {
     getYearlyMoviesCount,
     getTVShowsCount,
     getAnimesCount,
+    postUser,
 };
