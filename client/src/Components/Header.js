@@ -37,6 +37,14 @@ function Header() {
             >
                 Stats
             </span>
+            <span
+                className="nav-item"
+                onClick={() => {
+                    navigate("/Login");
+                }}
+            >
+                Logout
+            </span>
         </div>
     );
 }

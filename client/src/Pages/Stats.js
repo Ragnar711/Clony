@@ -4,7 +4,7 @@ import "./stats.css";
 import CanvasJSReact from "../canvasjs.react";
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-const Stats = () => {
+const Stats = ({ setShowHeader }) => {
     const [moviesCount, setMoviesCount] = useState(0);
     const [yearlyMoviesCount, setYearlyMoviesCount] = useState(0);
     const [tvShowsCount, setTVShowsCount] = useState(0);
@@ -32,6 +32,7 @@ const Stats = () => {
         Axios.get("http://localhost:8080/getGenres").then((response) => {
             setGenres(response.data);
         });
+        setShowHeader(true);
     }, []);
     const options = {
         exportEnabled: true,

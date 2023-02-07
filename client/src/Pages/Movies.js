@@ -13,7 +13,7 @@ import "./movies.css";
 import Axios from "redaxios";
 import { useState, useEffect } from "react";
 
-const Movies = () => {
+const Movies = ({ setShowHeader }) => {
     const [movies, setMovies] = useState([]);
     const [tvshows, setTvshows] = useState([]);
     const [animes, setAnimes] = useState([]);
@@ -47,6 +47,7 @@ const Movies = () => {
                 setError(error);
                 setLoading(false);
             });
+        setShowHeader(true);
     }, []);
     const deleteMedia = async (id) => {
         try {

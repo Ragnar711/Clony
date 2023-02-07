@@ -1,5 +1,5 @@
 import { Box, TextField, Button, Rating, Typography } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Axios from "redaxios";
 import "./addNew.css";
 
@@ -17,7 +17,7 @@ const initialState = {
     Genre2: "",
 };
 
-function AddNew() {
+function AddNew({ setShowHeader }) {
     const [form, setForm] = useState(initialState);
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -43,6 +43,9 @@ function AddNew() {
             }
         }
     };
+    useEffect(() => {
+        setShowHeader(true);
+    }, []);
     return (
         <div className="AddNewLayout">
             <Box

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Axios from "redaxios";
 import "./actors.css";
 
-const Actors = () => {
+const Actors = ({ setShowHeader }) => {
     const [actors, setActors] = useState([]);
     useEffect(() => {
         Axios.get("http://localhost:8080/getActors")
@@ -12,6 +12,7 @@ const Actors = () => {
             .catch((error) => {
                 console.log(error);
             });
+        setShowHeader(true);
     }, []);
     return (
         <div className="actorsLayout">
