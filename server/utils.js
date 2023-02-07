@@ -1,11 +1,9 @@
-/*const handleError = (res, func) => {
-    try {
-        func();
-    } catch (error) {
-        res.status(500).json({ error: error.toString() });
-    }
+const { createHash } = require("crypto");
+
+const hash = (input) => {
+    return createHash("sha256").update(input).digest("hex");
 };
 
 module.exports = {
-    handleError,
-};*/
+    hash,
+};

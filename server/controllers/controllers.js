@@ -1,3 +1,9 @@
+const { createHash } = require("crypto");
+
+const hash = (input) => {
+    return createHash("sha256").update(input).digest("hex");
+};
+
 const postMedia = async (req, res) => {
     const {
         Name,
@@ -217,7 +223,7 @@ const postUser = async (req, res) => {
             data: {
                 username,
                 email,
-                password,
+                password: hash(password),
             },
         });
         return res.status(201).json({ message: "User created successfully" });
