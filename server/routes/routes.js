@@ -14,6 +14,7 @@ const {
     getTVShowsCount,
     getAnimesCount,
     postUser,
+    putUser,
 } = require("../controllers/controllers");
 
 router.post("/postMedia", postMedia);
@@ -29,5 +30,6 @@ router.get("/getYearlyMoviesCount", getYearlyMoviesCount);
 router.get("/getTVShowsCount", getTVShowsCount);
 router.get("/getAnimesCount", getAnimesCount);
 router.post("/postUser", postUser);
+router.put("/putUser", putUser);
 
 module.exports = router;

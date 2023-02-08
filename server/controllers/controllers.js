@@ -232,6 +232,28 @@ const postUser = async (req, res) => {
     }
 };
 
+const putUser = async (req, res) => {
+    const prisma = req.app.get("prisma");
+    const { username, password } = req.body;
+    try {
+        const user = await prisma.users.findMany({
+            where: {
+                username,
+            },
+        });
+        if (!user) {
+            return res.status(400).json({ error: "User not found" });
+        }
+        const hashedPassword = hash(password);
+        if (hashedPassword !== user[0].password) {
+            return res.status(400).json({ error: "Wrong password" });
+        }
+        return res.status(200).json(user);
+    } catch (err) {
+        return res.status(500).json({ error: err.message });
+    }
+};
+
 module.exports = {
     postMedia,
     getMovies,
@@ -246,4 +268,5 @@ module.exports = {
     getTVShowsCount,
     getAnimesCount,
     postUser,
+    putUser,
 };
