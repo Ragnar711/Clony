@@ -74,6 +74,7 @@
     left: calc(50% - 125px);
     top: -125px;
     width: 250px;
+    padding: 25px;
 }
 
 .loginInputs {
