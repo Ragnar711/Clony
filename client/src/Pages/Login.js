@@ -20,18 +20,19 @@ const Login = ({ setShowHeader }) => {
     const login = async (e) => {
         e.preventDefault();
         try {
-            const response = await Axios.put("http://localhost:8080/putUser", {
+            await Axios.put("http://localhost:8080/putUser", {
                 username,
                 password,
             });
-            console.log(response.data);
             navigate("/Home");
         } catch (error) {
             setShowAlert(true);
             setErrorMessage("Incorrect email or password");
         }
     };
-    useEffect(() => setShowHeader(false), []);
+    useEffect(() => {
+        setShowHeader(false);
+    }, []);
     return (
         <ChakraProvider>
             {showAlert ? (

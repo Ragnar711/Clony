@@ -97,7 +97,8 @@
 .addUser > h1 {
     color: white;
     position: absolute;
-    top: 15%;
+    top: 10%;
+    font-size: 3rem;
 }
 
 #goBack {

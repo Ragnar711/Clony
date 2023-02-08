@@ -15,9 +15,9 @@
     opacity: 0.8;
     padding: 25px;
     position: absolute;
-    right: 35%;
+    right: 25%;
     top: 25%;
-    width: 30%;
+    width: 50%;
 }
 
 .loginForm > input {
