@@ -3,3 +3,5 @@ Add the user icon dropdown menu (options + logout)
 Add an options page where the user can edit or delete his account
 Add a special options page for the admin to manage users
 Transform the nav bar into a burger button when the resolution becomes small enough 
+Add new page must be responsive for small screens
+The possibility for the user to add his image which will replace his initial in the header icon
