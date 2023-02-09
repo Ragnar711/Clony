@@ -211,15 +211,15 @@ const getAnimesCount = async (req, res) => {
 const postUser = async (req, res) => {
     const { username, email, password } = req.body;
     const prisma = req.app.get("prisma");
+    const [usernameExists, emailExists] = await Promise.all([
+        prisma.users.findUnique({ where: { username } }),
+        prisma.users.findUnique({ where: { email } }),
+    ]);
+    if (usernameExists || emailExists) {
+        return res.status(400).json({ message: "User already exists" });
+    }
     try {
-        const usernameExists = await prisma.users.findUnique({
-            where: { username },
-        });
-        const emailexists = await prisma.users.findUnique({ where: { email } });
-        if (usernameExists || emailexists) {
-            return res.status(400).json({ message: "User already exists" });
-        }
-        const newUser = await prisma.users.create({
+        await prisma.users.create({
             data: {
                 username,
                 email,
@@ -252,6 +252,10 @@ const putUser = async (req, res) => {
     } catch (err) {
         return res.status(500).json({ error: err.message });
     }
+};
+
+getUser = async (req, res) => {
+    const prisma = req.app.get("prisma");
 };
 
 module.exports = {

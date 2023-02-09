@@ -5,13 +5,9 @@ import "./actors.css";
 const Actors = ({ setShowHeader }) => {
     const [actors, setActors] = useState([]);
     useEffect(() => {
-        Axios.get("http://localhost:8080/getActors")
-            .then((response) => {
-                setActors(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        Axios.get("http://localhost:8080/getActors").then((response) => {
+            setActors(response.data);
+        });
         setShowHeader(true);
     }, []);
     return (

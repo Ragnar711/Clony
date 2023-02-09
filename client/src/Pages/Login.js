@@ -20,10 +20,15 @@ const Login = ({ setShowHeader }) => {
     const login = async (e) => {
         e.preventDefault();
         try {
-            await Axios.put("http://localhost:8080/putUser", {
+            const res = await Axios.put("http://localhost:8080/putUser", {
                 username,
                 password,
             });
+            let initials = "";
+            res.data[0].username.split(" ").map((word) => {
+                return (initials += word[0].toUpperCase());
+            });
+            sessionStorage.setItem("username", initials);
             navigate("/Home");
         } catch (error) {
             setShowAlert(true);

@@ -1,27 +1,28 @@
 import { Box, TextField, Button, Rating, Typography } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Axios from "redaxios";
 import "./addNew.css";
 
-const initialState = {
-    Name: "",
-    Year: 0,
-    MediaType: "",
-    Review: 0,
-    Director: "",
-    Actor1: "",
-    Actor2: "",
-    Actor3: "",
-    Actor4: "",
-    Genre1: "",
-    Genre2: "",
-};
-
 function AddNew({ setShowHeader }) {
-    const [form, setForm] = useState(initialState);
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
+    const [form, setForm] = useState({
+        Name: "",
+        Year: 0,
+        MediaType: "",
+        Review: 0,
+        Director: "",
+        Actor1: "",
+        Actor2: "",
+        Actor3: "",
+        Actor4: "",
+        Genre1: "",
+        Genre2: "",
+    });
+    const handleChange = useCallback(
+        (e) => {
+            setForm({ ...form, [e.target.name]: e.target.value });
+        },
+        [form]
+    );
     const submitMedia = async () => {
         try {
             const mediaTypes = ["Movie", "TV Show", "Anime"];

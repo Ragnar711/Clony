@@ -11,6 +11,7 @@ specifiers:
   eslint: ^8.33.0
   eslint-config-react-app: ^7.0.1
   framer-motion: ^8.5.5
+  jwt-decode: ^3.1.2
   react: ^18.2.0
   react-dom: ^18.2.0
   react-icons: ^4.7.1
@@ -25,6 +26,7 @@ dependencies:
   '@emotion/styled': 11.10.5_csjd3nthallvoinafcukdmosde
   '@mui/material': 5.11.7_5rzy53przelm5jchjmb5vr6dxy
   framer-motion: 8.5.5_biqbaboplfbrettd7655fr4n2y
+  jwt-decode: 3.1.2
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-icons: 4.7.1_react@18.2.0
@@ -7726,6 +7728,10 @@ packages:
     dependencies:
       array-includes: 3.1.6
       object.assign: 4.1.4
+
+  /jwt-decode/3.1.2:
+    resolution: {integrity: sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==}
+    dev: false
 
   /kind-of/6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}

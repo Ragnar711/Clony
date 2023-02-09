@@ -1,6 +1,6 @@
 import "./addUser.css";
-import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useCallback } from "react";
 import { AiOutlineUser, AiFillLock, AiOutlineMail } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
 import Axios from "redaxios";
@@ -12,20 +12,21 @@ import {
     CloseButton,
 } from "@chakra-ui/react";
 
-const initialState = {
-    username: "",
-    email: "",
-    password: "",
-};
-
 const AddUser = ({ setShowHeader }) => {
     const navigate = useNavigate();
-    const [form, setForm] = useState(initialState);
+    const [form, setForm] = useState({
+        username: "",
+        email: "",
+        password: "",
+    });
     const [showAlert, setShowAlert] = useState(false);
     const [error, setError] = useState("");
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-    };
+    const handleChange = useCallback(
+        (e) => {
+            setForm({ ...form, [e.target.name]: e.target.value });
+        },
+        [form]
+    );
     const submitUser = async (e) => {
         e.preventDefault();
         try {
@@ -35,8 +36,8 @@ const AddUser = ({ setShowHeader }) => {
                 }
             );
         } catch (err) {
-            setShowAlert(true);
             setError(err.data.message);
+            setShowAlert(true);
         }
     };
     useEffect(() => {
@@ -97,6 +98,7 @@ const AddUser = ({ setShowHeader }) => {
                                     placeholder="Username"
                                     name="username"
                                     onChange={handleChange}
+                                    required
                                 />
                             </span>
                         </div>
@@ -126,6 +128,7 @@ const AddUser = ({ setShowHeader }) => {
                                         placeholder="Password"
                                         name="password"
                                         onChange={handleChange}
+                                        required
                                     />
                                 </span>
                             </div>
