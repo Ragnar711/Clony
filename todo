@@ -1,0 +1,5 @@
+Add the 404 styling
+Add the user icon dropdown menu (options + logout)
+Add an options page where the user can edit or delete his account
+Add a special options page for the admin to manage users
+Transform the nav bar into a burger button when the resolution becomes small enough 
