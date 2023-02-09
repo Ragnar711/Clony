@@ -9,9 +9,12 @@ function Header() {
         if (sessionStorage.getItem("username")) {
             setUsername(sessionStorage.getItem("username"));
         } else {
-            //TODO logout
-            //TODO Alerte connectez vous 9ablement
+            navigate("/");
         }
+    };
+    const logout = () => {
+        sessionStorage.clear();
+        navigate("/");
     };
     useEffect(() => {
         getUserName();
@@ -54,7 +57,7 @@ function Header() {
                 <span
                     className="nav-item"
                     onClick={() => {
-                        navigate("/");
+                        logout();
                     }}
                 >
                     Logout

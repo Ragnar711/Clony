@@ -37,6 +37,9 @@ const Login = ({ setShowHeader }) => {
     };
     useEffect(() => {
         setShowHeader(false);
+        if (sessionStorage.getItem("username")) {
+            navigate("/Home");
+        }
     }, []);
     return (
         <ChakraProvider>
