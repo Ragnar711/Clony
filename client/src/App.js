@@ -9,6 +9,7 @@ const Movies = lazy(() => import("./Pages/Movies"));
 const Actors = lazy(() => import("./Pages/Actors"));
 const Stats = lazy(() => import("./Pages/Stats"));
 const Login = lazy(() => import("./Pages/Login"));
+const Unfound = lazy(() => import("./Pages/404"));
 
 function App() {
     const [showHeader, setShowHeader] = useState(true);
@@ -41,6 +42,10 @@ function App() {
                         <Route
                             path="/Stats"
                             element={<Stats setShowHeader={setShowHeader} />}
+                        />
+                        <Route
+                            path="*"
+                            element={<Unfound setShowHeader={setShowHeader} />}
                         />
                     </Routes>
                 </Suspense>

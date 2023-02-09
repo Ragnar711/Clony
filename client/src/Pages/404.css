@@ -1,0 +1,20 @@
+.notFound {
+    background: linear-gradient(to right, #c06c84, #6c5b7b, #355c7d);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.notFound > h1 {
+    font-size: 48px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.notFound > p {
+    font-size: 18px;
+    color: white;
+    margin-bottom: 20px;
+}
