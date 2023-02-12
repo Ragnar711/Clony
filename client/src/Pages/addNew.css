@@ -25,7 +25,7 @@
     justify-content: center;
     margin: auto;
     padding: 2rem 5rem;
-    width: max-content;
+    width: min-content;
 }
 .firstRow {
     display: flex;
@@ -55,11 +55,32 @@
     text-align: center;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 768px) {
     .AddNewLayout {
-        height: max-content;
-        margin-top: 5rem;
+        width: max-content;
     }
+    .addNewHeader {
+        border: none;
+    }
+    .form {
+        display: flex;
+        flex-direction: column;
+        margin-inline: auto;
+        width: 60%;
+    }
+    .firstRow {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .actors {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+/*@media screen and (min-width: 701px) and (max-width: 1100px) {
     .form {
         align-items: center;
         background-color: white;
@@ -68,20 +89,12 @@
         flex-direction: column;
         height: max-content;
         justify-content: center;
-        margin: 0 auto;
-        margin-top: 25px;
+        margin-inline: auto;
+        margin-top: 6rem;
         width: 80%;
     }
-    .firstRow {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .actors {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+    .form > h1 {
+        font-size: 150%;
     }
     .addNewHeader {
         border: 3px solid black;
@@ -91,3 +104,10 @@
         text-shadow: -8px 4px 0 #a3cef1;
     }
 }
+
+@media screen and (max-height: 1000px) {
+    .form {
+        height: 80%;
+        margin-top: 5rem;
+    }
+}*/

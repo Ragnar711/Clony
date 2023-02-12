@@ -132,7 +132,7 @@ const getDirectors = async (req, res) => {
     const prisma = req.app.get("prisma");
     try {
         const directors =
-            await prisma.$queryRaw`SELECT director, CAST(COUNT(*) AS CHAR) as movies_count FROM media WHERE director != "" GROUP BY director ORDER By movies_count DESC;`;
+            await prisma.$queryRaw`SELECT director, CAST(COUNT(*) AS CHAR) as movies_count FROM media WHERE director != "" GROUP BY director ORDER By movies_count DESC LIMIT 10;`;
         res.status(200).json(directors);
     } catch (err) {
         res.status(500).json({ error: err.message });

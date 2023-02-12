@@ -77,7 +77,7 @@ const Login = ({ setShowHeader }) => {
                     }}
                 >
                     <div className="upperIcon">
-                        <AiOutlineUser color="white" size={200} />
+                        <AiOutlineUser color="white" size={150} />
                     </div>
                     <div className="loginInputs">
                         <div className="userName">
