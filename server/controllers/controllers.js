@@ -254,10 +254,6 @@ const putUser = async (req, res) => {
     }
 };
 
-getUser = async (req, res) => {
-    const prisma = req.app.get("prisma");
-};
-
 module.exports = {
     postMedia,
     getMovies,
