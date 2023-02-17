@@ -121,7 +121,7 @@ const getActors = async (req, res) => {
     const prisma = req.app.get("prisma");
     try {
         const actors =
-            await prisma.$queryRaw`SELECT actor, SUM(medias) as movies_count FROM (SELECT Actor1 as actor, COUNT(*) as medias FROM media WHERE Actor1 != "" GROUP BY actor1 UNION ALL SELECT Actor2 as actor, COUNT(*) as medias FROM media WHERE Actor2 != "" GROUP BY Actor2 UNION ALL SELECT Actor3 as actor, COUNT(*) as medias FROM media WHERE Actor3 != "" GROUP BY Actor3 UNION ALL SELECT Actor4 as actor, COUNT(*) as medias FROM media WHERE Actor4 != "" GROUP BY Actor4) t GROUP BY actor ORDER BY movies_count DESC;`;
+            await prisma.$queryRaw`SELECT actor, SUM(medias) as movies_count FROM (SELECT Actor1 as actor, COUNT(*) as medias FROM media WHERE Actor1 != '' GROUP BY actor1 UNION ALL SELECT Actor2 as actor, COUNT(*) as medias FROM media WHERE Actor2 != '' GROUP BY Actor2 UNION ALL SELECT Actor3 as actor, COUNT(*) as medias FROM media WHERE Actor3 != '' GROUP BY Actor3 UNION ALL SELECT Actor4 as actor, COUNT(*) as medias FROM media WHERE Actor4 != '' GROUP BY Actor4) t GROUP BY actor ORDER BY movies_count DESC;`;
         return res.status(200).json(actors);
     } catch (err) {
         return res.status(500).json({ error: err.message });
@@ -132,7 +132,7 @@ const getDirectors = async (req, res) => {
     const prisma = req.app.get("prisma");
     try {
         const directors =
-            await prisma.$queryRaw`SELECT director, CAST(COUNT(*) AS CHAR) as movies_count FROM media WHERE director != "" GROUP BY director ORDER By movies_count DESC LIMIT 10;`;
+            await prisma.$queryRaw`SELECT TOP (10) director, CAST(COUNT(*) AS CHAR) as movies_count FROM media WHERE director != '' GROUP BY director ORDER By movies_count DESC;`;
         res.status(200).json(directors);
     } catch (err) {
         res.status(500).json({ error: err.message });
