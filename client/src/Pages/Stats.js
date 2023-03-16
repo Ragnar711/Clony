@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Axios from "redaxios";
-import "./stats.css";
+import "../styles/stats.css";
 import CanvasJSReact from "../canvasjs.react";
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 

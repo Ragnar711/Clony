@@ -26,6 +26,7 @@
     margin: auto;
     padding: 2rem 5rem;
     width: min-content;
+    opacity: 0.9;
 }
 .firstRow {
     display: flex;

@@ -1,7 +1,7 @@
 import { Box, TextField, Button, Rating, Typography } from "@mui/material";
 import { useState, useEffect, useCallback } from "react";
 import Axios from "redaxios";
-import "./addNew.css";
+import "../styles/addNew.css";
 
 function AddNew({ setShowHeader }) {
     const [form, setForm] = useState({
@@ -67,6 +67,7 @@ function AddNew({ setShowHeader }) {
                             label="Name"
                             variant="outlined"
                             onChange={handleChange}
+                            required
                         />
                     </div>
                     <div>
@@ -76,6 +77,7 @@ function AddNew({ setShowHeader }) {
                             label="Year"
                             variant="outlined"
                             onChange={handleChange}
+                            required
                         />
                     </div>
                     <div>

@@ -1,4 +1,4 @@
-import "./Login.css";
+import "../styles/Login.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AiOutlineUser, AiFillLock } from "react-icons/ai";

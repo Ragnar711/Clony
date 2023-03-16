@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
 function Header() {
     const navigate = useNavigate();
-    const [username, setUsername] = useState("--");
     const getUserName = () => {
         if (sessionStorage.getItem("username")) {
-            setUsername(sessionStorage.getItem("username"));
+            sessionStorage.getItem("username");
         } else {
             navigate("/");
         }
@@ -63,7 +62,6 @@ function Header() {
                     Logout
                 </span>
             </div>
-            <span className="nav-icon">{username}</span>
         </div>
     );
 }

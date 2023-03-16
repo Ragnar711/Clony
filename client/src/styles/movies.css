@@ -15,6 +15,12 @@ td {
     padding: 10px;
 }
 
+.media_table {
+    height: 80dvh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
 .deleteMovie {
     background-color: #4caf50;
     border: none;
@@ -31,7 +37,7 @@ td {
 .moviesLayout {
     background: linear-gradient(to right, #c06c84, #6c5b7b, #355c7d);
     margin-top: 5rem;
-    min-height: 100vh;
+    height: calc(100dvh - 5rem);
     opacity: 0.5;
     padding: 25px;
 }

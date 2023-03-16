@@ -1,0 +1,58 @@
+.actorsLayout {
+    background: linear-gradient(to right, #c06c84, #6c5b7b, #355c7d);
+    margin-top: 5rem;
+    height: calc(100dvh - 5rem);
+    opacity: 0.5;
+    padding: 25px;
+}
+
+.actors_table {
+    height: 80vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.actorsLayout > table {
+    background-color: white;
+    margin-inline: auto;
+}
+
+table {
+    background-color: white;
+    width: 100%;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+}
+
+th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+td {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.search {
+    margin-bottom: 25px;
+}
+
+.search > label {
+    color: black;
+    font-weight: bold;
+    padding-right: 2.5%;
+}
+
+.search > input {
+    border-radius: 25px;
+    color: black;
+    text-align: center;
+    height: 2rem;
+    font-size: 1.25rem;
+}

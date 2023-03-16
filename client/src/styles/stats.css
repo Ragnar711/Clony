@@ -51,7 +51,7 @@ td {
     margin-top: 5rem;
     opacity: 0.5;
     padding: 25px;
-    height: 100vh;
+    height: calc(100dvh - 5rem);
 }
 
 .moviesGrid {

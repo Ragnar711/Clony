@@ -9,7 +9,7 @@ import {
 import { MdOutlineLocalMovies } from "react-icons/md";
 import { RiMovie2Line } from "react-icons/ri";
 import { BiMovie } from "react-icons/bi";
-import "./movies.css";
+import "../styles/movies.css";
 import Axios from "redaxios";
 import { useState, useEffect } from "react";
 
@@ -88,109 +88,115 @@ const Movies = ({ setShowHeader }) => {
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Year</th>
-                                        <th>Rating</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {movies.map((item) => {
-                                        return (
-                                            <tr key={item.id}>
-                                                <td>{item.Name}</td>
-                                                <td>{item.Year}</td>
-                                                <td>{item.Review}</td>
-                                                <td>
-                                                    <button
-                                                        className="deleteMovie"
-                                                        onClick={() => {
-                                                            deleteMedia(
-                                                                item.id
-                                                            );
-                                                        }}
-                                                    >
-                                                        Delete
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </table>
+                            <div className="media_table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Year</th>
+                                            <th>Rating</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {movies.map((item) => {
+                                            return (
+                                                <tr key={item.id}>
+                                                    <td>{item.Name}</td>
+                                                    <td>{item.Year}</td>
+                                                    <td>{item.Review}</td>
+                                                    <td>
+                                                        <button
+                                                            className="deleteMovie"
+                                                            onClick={() => {
+                                                                deleteMedia(
+                                                                    item.id
+                                                                );
+                                                            }}
+                                                        >
+                                                            Delete
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
                         </TabPanel>
                         <TabPanel>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Year</th>
-                                        <th>Rating</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {tvshows.map((item) => {
-                                        return (
-                                            <tr key={item.id}>
-                                                <td>{item.Name}</td>
-                                                <td>{item.Year}</td>
-                                                <td>{item.Review}</td>
-                                                <td>
-                                                    <button
-                                                        className="deleteMovie"
-                                                        onClick={() => {
-                                                            deleteMedia(
-                                                                item.id
-                                                            );
-                                                        }}
-                                                    >
-                                                        Delete
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </table>
+                            <div className="media_table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Year</th>
+                                            <th>Rating</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {tvshows.map((item) => {
+                                            return (
+                                                <tr key={item.id}>
+                                                    <td>{item.Name}</td>
+                                                    <td>{item.Year}</td>
+                                                    <td>{item.Review}</td>
+                                                    <td>
+                                                        <button
+                                                            className="deleteMovie"
+                                                            onClick={() => {
+                                                                deleteMedia(
+                                                                    item.id
+                                                                );
+                                                            }}
+                                                        >
+                                                            Delete
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
                         </TabPanel>
                         <TabPanel>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Year</th>
-                                        <th>Rating</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {animes.map((item) => {
-                                        return (
-                                            <tr key={item.id}>
-                                                <td>{item.Name}</td>
-                                                <td>{item.Year}</td>
-                                                <td>{item.Review}</td>
-                                                <td>
-                                                    <button
-                                                        className="deleteMovie"
-                                                        onClick={() => {
-                                                            deleteMedia(
-                                                                item.id
-                                                            );
-                                                        }}
-                                                    >
-                                                        Delete
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </table>
+                            <div className="media_table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Year</th>
+                                            <th>Rating</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {animes.map((item) => {
+                                            return (
+                                                <tr key={item.id}>
+                                                    <td>{item.Name}</td>
+                                                    <td>{item.Year}</td>
+                                                    <td>{item.Review}</td>
+                                                    <td>
+                                                        <button
+                                                            className="deleteMovie"
+                                                            onClick={() => {
+                                                                deleteMedia(
+                                                                    item.id
+                                                                );
+                                                            }}
+                                                        >
+                                                            Delete
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
+                                    </tbody>
+                                </table>
+                            </div>
                         </TabPanel>
                     </TabPanels>
                 </Tabs>

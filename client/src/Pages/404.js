@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./404.css";
+import "../styles/404.css";
 
 const NotFound = ({ setShowHeader }) => {
     const navigate = useNavigate();

@@ -1,4 +1,4 @@
-import "./addUser.css";
+import "../styles/addUser.css";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect, useCallback } from "react";
 import { AiOutlineUser, AiFillLock, AiOutlineMail } from "react-icons/ai";
