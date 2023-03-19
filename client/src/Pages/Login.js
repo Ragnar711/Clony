@@ -113,9 +113,15 @@ const Login = ({ setShowHeader }) => {
                         <Link className="signup" to={"/Signup"}>
                             New User? Sign Up
                         </Link>
+                        <div id="container">
+                            <button className="learn-more">
+                                <span className="circle" aria-hidden="true">
+                                    <span className="icon arrow"></span>
+                                </span>
+                                <span className="button-text">Login</span>
+                            </button>
+                        </div>
                     </div>
-                    <button className="loginButton">Login</button>
-                    <div id="shadow"></div>
                 </form>
             </div>
         </ChakraProvider>

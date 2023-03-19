@@ -50,7 +50,7 @@ function AddNew({ setShowHeader }) {
     return (
         <div className="AddNewLayout">
             <Box
-                className="form"
+                className="card"
                 component="form"
                 sx={{
                     "& > :not(style)": { m: 1, width: "25ch" },
@@ -96,7 +96,9 @@ function AddNew({ setShowHeader }) {
                     }}
                     className="rating"
                 >
-                    <Typography component="legend">Rating</Typography>
+                    <Typography component="legend" className="ratingLegend">
+                        Rating
+                    </Typography>
                     <Rating
                         className="stars"
                         name="Review"
@@ -159,10 +161,10 @@ function AddNew({ setShowHeader }) {
                     />
                 </div>
                 <Button
-                    variant="contained"
                     onClick={() => {
                         submitMedia();
                     }}
+                    className="custom-btn btn-add"
                 >
                     Add Media
                 </Button>

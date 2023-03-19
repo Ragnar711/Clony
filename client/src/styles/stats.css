@@ -40,7 +40,7 @@ td {
     width: 7.5rem;
 }
 .stats-container {
-    background: linear-gradient(to right, #c06c84, #6c5b7b, #355c7d);
+    background-image: url("../assets/addNewBg.jpg");
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 30% 70%;
@@ -49,7 +49,6 @@ td {
     grid-template-areas: "moviesGrid tvshowsGrid" "pieGrid directorsGrid";
     height: max-content;
     margin-top: 5rem;
-    opacity: 0.5;
     padding: 25px;
     height: calc(100dvh - 5rem);
 }
@@ -70,8 +69,7 @@ td {
     background-color: antiquewhite;
     grid-area: pieGrid;
     padding: 25px;
-    overflow: scroll;
-    scroll-behavior: smooth;
+    overflow: hidden;
 }
 
 .directorsGrid {
@@ -80,8 +78,7 @@ td {
     grid-area: directorsGrid;
     justify-content: center;
     padding: 25px;
-    overflow: scroll;
-    scroll-behavior: smooth;
+    overflow: hidden;
 }
 
 h3 {

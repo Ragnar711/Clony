@@ -76,13 +76,13 @@ const Movies = ({ setShowHeader }) => {
             <div className="moviesLayout">
                 <Tabs variant="soft-rounded" colorScheme="red">
                     <TabList>
-                        <Tab className="tab">
+                        <Tab className="tab" color={"white"}>
                             <BiMovie /> Movies
                         </Tab>
-                        <Tab className="tab">
+                        <Tab className="tab" color={"white"}>
                             <MdOutlineLocalMovies /> Shows
                         </Tab>
-                        <Tab className="tab">
+                        <Tab className="tab" color={"white"}>
                             <RiMovie2Line /> Animes
                         </Tab>
                     </TabList>

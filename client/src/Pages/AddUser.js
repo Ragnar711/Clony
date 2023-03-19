@@ -133,7 +133,14 @@ const AddUser = ({ setShowHeader }) => {
                                 </span>
                             </div>
                         </div>
-                        <button className="signupButton">Sign Up</button>
+                        <div id="container">
+                            <button className="learn-more">
+                                <span className="circle" aria-hidden="true">
+                                    <span className="icon arrow"></span>
+                                </span>
+                                <span className="button-text">Signup</span>
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

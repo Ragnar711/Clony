@@ -1,32 +1,74 @@
-.AddNewLayout {
-    background-image: url("../assets/addNewBg.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+:root {
+    --clr-1: #3a0ca3;
+    --clr-2: #4361ee;
+    --clr-3: #4cc9f0;
+    --clr-4: #7209b7;
+    --clr-5: #f72585;
+}
+
+body {
+    background-color: rgb(48, 48, 48);
+}
+
+.addNewLayout {
+    background: linear-gradient(to right, #c06c84, #6c5b7b, #355c7d);
+    opacity: 0.9;
+}
+
+.card {
+    height: 60vh;
+    background: white;
+    border-radius: 0.5rem;
+    position: relative;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    margin-top: 3rem;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    margin: 20vh 25%;
+}
+
+.card::before,
+.card::after {
+    content: "";
+    position: absolute;
+    inset: -0.5rem;
+    z-index: -1;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        var(--clr-3),
+        var(--clr-4),
+        var(--clr-5),
+        var(--clr-4),
+        var(--clr-3)
+    );
+    border-radius: inherit;
+    animation: rotation 5s linear infinite;
+}
+
+.card::after {
+    filter: blur(3.5rem);
+}
+
+@keyframes rotation {
+    0% {
+        --gradient-angle: 0deg;
+    }
+    100% {
+        --gradient-angle: 360deg;
+    }
 }
 .addNewHeader {
-    border: 3px solid black;
-    color: #274c77;
+    color: var(--clr-4);
     font-size: 2.5rem;
     margin: auto;
-    padding: 1rem 5rem;
-    text-shadow: -8px 3px 0 #a3cef1;
-}
-.form {
-    align-items: center;
-    background-color: white;
-    border-radius: 50px;
-    display: flex;
-    flex-direction: column;
-    height: max-content;
-    justify-content: center;
-    margin: auto;
-    padding: 2rem 5rem;
-    width: min-content;
-    opacity: 0.9;
+    padding: 1rem;
 }
 .firstRow {
     display: flex;
@@ -36,8 +78,13 @@
     width: 75% !important;
 }
 .input {
-    background-color: white;
-    height: 50px;
+    height: 30px;
+    margin-bottom: 25px !important;
+}
+.ratingLegend {
+    display: flex;
+    justify-content: center;
+    color: black;
 }
 .actors {
     align-items: center;
@@ -56,59 +103,58 @@
     text-align: center;
 }
 
-@media screen and (max-width: 768px) {
-    .AddNewLayout {
-        width: max-content;
-    }
-    .addNewHeader {
-        border: none;
-    }
-    .form {
-        display: flex;
-        flex-direction: column;
-        margin-inline: auto;
-        width: 60%;
-    }
-    .firstRow {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .actors {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+.custom-btn {
+    width: 130px;
+    height: 50px;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: "Lato", sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+        7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+    outline: none;
 }
-
-/*@media screen and (min-width: 701px) and (max-width: 1100px) {
-    .form {
-        align-items: center;
-        background-color: white;
-        border-radius: 25px;
-        display: flex;
-        flex-direction: column;
-        height: max-content;
-        justify-content: center;
-        margin-inline: auto;
-        margin-top: 6rem;
-        width: 80%;
-    }
-    .form > h1 {
-        font-size: 150%;
-    }
-    .addNewHeader {
-        border: 3px solid black;
-        color: #274c77;
-        font-size: 1rem;
-        margin: 0 auto;
-        text-shadow: -8px 4px 0 #a3cef1;
-    }
+.btn-add {
+    width: 130px;
+    height: 50px;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    background: #6c5b7b;
+    margin: 5%;
 }
-
-@media screen and (max-height: 1000px) {
-    .form {
-        height: 80%;
-        margin-top: 5rem;
-    }
-}*/
+.btn-add:hover {
+    color: #6c5b7b;
+    background: transparent;
+    box-shadow: none;
+}
+.btn-add:before,
+.btn-add:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    background: #6c5b7b;
+    box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003,
+        4px 4px 5px 0px #0002;
+    transition: 400ms ease all;
+}
+.btn-add:after {
+    right: inherit;
+    top: inherit;
+    left: 0;
+    bottom: 0;
+}
+.btn-add:hover:before,
+.btn-add:hover:after {
+    width: 100%;
+    transition: 800ms ease all;
+}

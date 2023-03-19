@@ -1,6 +1,7 @@
 table {
     background-color: white;
     width: 100%;
+    scroll-behavior: auto;
 }
 
 th {
@@ -8,6 +9,8 @@ th {
     font-weight: bold;
     padding: 10px;
     text-align: center;
+    position: sticky;
+    top: 0;
 }
 
 td {
@@ -35,10 +38,9 @@ td {
 }
 
 .moviesLayout {
-    background: linear-gradient(to right, #c06c84, #6c5b7b, #355c7d);
+    background-image: url("../assets/addNewBg.jpg");
     margin-top: 5rem;
     height: calc(100dvh - 5rem);
-    opacity: 0.5;
     padding: 25px;
 }
 
