@@ -6,16 +6,16 @@ One place for trcking your movies, tv shows, and animes
 
 ## Installation
 Server side:
-1- npm init -> npm install \n
-2- create a database using your favorite service provider (must be supported by prisma)
-3- specify the db url in the env file (refer to prisma docs)
-4- in the terminal: npx prisma migrate dev (to sync your db with the necessary models)
-5- insall nodemon globally with npm install -g nodemon then run it in the terminal by typing nodemon
-6- the server should be running now, if not follow the error and figure it out
-Client side:
-1- install pnpm globally -> then run pnpm init -> pnpm install
-2- in the terminal: pnpm run start
-3- you should be set to go
+1- npm init -> npm install  
+2- create a database using your favorite service provider (must be supported by prisma)  
+3- specify the db url in the env file (refer to prisma docs)  
+4- in the terminal: npx prisma migrate dev (to sync your db with the necessary models)  
+5- insall nodemon globally with npm install -g nodemon then run it in the terminal by typing nodemon  
+6- the server should be running now, if not follow the error and figure it out  
+Client side:  
+1- install pnpm globally -> then run pnpm init -> pnpm install  
+2- in the terminal: pnpm run start  
+3- you should be set to go  
 
 ## Usage
 1/ Login and signup:
