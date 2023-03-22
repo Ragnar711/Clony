@@ -6,7 +6,7 @@ One place for trcking your movies, tv shows, and animes
 
 ## Installation
 Server side:
-1- npm init -> npm install
+1- npm init -> npm install \n
 2- create a database using your favorite service provider (must be supported by prisma)
 3- specify the db url in the env file (refer to prisma docs)
 4- in the terminal: npx prisma migrate dev (to sync your db with the necessary models)
