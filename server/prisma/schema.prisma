@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model media {
+  id        String    @id @default(uuid())
+  Name      String @unique @db.VarChar(255)
+  Review    Int 
+  Year      Int 
+  Director  String? @db.VarChar(255) 
+  Actor1    String? @db.VarChar(255) 
+  Actor2    String? @db.VarChar(255) 
+  Actor3    String? @db.VarChar(255) 
+  Actor4    String? @db.VarChar(255) 
+  MediaType String? @db.VarChar(255)
+  Genre1    String? @db.VarChar(255)
+  Genre2    String? @db.VarChar(255)
+}
+
+model users {
+  id String @id @default(uuid())
+  username String @unique @db.VarChar(255)
+  email String @unique @db.VarChar(255)
+  password String @db.VarChar(255)
+}

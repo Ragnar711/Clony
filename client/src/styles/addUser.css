@@ -1,0 +1,120 @@
+.addUser {
+    background-image: url("../assets/addNewBg.jpg");
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addUserForm {
+    align-items: center;
+    background-color: #c3bacd;
+    border-radius: 25px;
+    display: flex;
+    height: 50%;
+    justify-content: center;
+    min-width: max-content;
+    width: 50%;
+    padding-inline: 25px;
+    position: relative;
+}
+
+.addUserForm > input {
+    height: 2rem;
+}
+
+.userNameIcon {
+    align-items: center;
+    background-color: #022649;
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    margin-top: 25px;
+    width: 50px;
+}
+
+.userNameInput > input {
+    background-color: #395374;
+    border: 1px solid #022649;
+    color: white;
+    font-size: 1.2rem;
+    height: 50px;
+    margin-top: 25px;
+    text-align: center;
+    width: 100%;
+}
+
+.userNameInput > input::placeholder {
+    color: white;
+    text-align: center;
+}
+
+.userName {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.password {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.password > div {
+    display: flex;
+    flex-direction: row;
+}
+
+.addUserInputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.addUser > h1 {
+    color: white;
+    position: absolute;
+    top: 10%;
+    font-size: 3rem;
+}
+
+#goBack {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    cursor: pointer;
+}
+
+#goBack:hover {
+    background-color: #6c5b7b;
+}
+
+.tooltip {
+    margin-block: 25px;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 90%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

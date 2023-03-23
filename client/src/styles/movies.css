@@ -1,0 +1,50 @@
+table {
+    background-color: white;
+    width: 100%;
+    scroll-behavior: auto;
+}
+
+th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+}
+
+td {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.media_table {
+    height: 80dvh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.deleteMovie {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.moviesLayout {
+    background-image: url("../assets/addNewBg.jpg");
+    margin-top: 5rem;
+    height: calc(100dvh - 5rem);
+    padding: 25px;
+}
+
+.tab {
+    color: white;
+    font-weight: bold;
+}
