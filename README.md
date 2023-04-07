@@ -23,7 +23,9 @@ Client side:
 In the first page you can login if you have an account or signup if you don't (passwords are hashed for safety reasons)  
 Errors will pop up if the username or password are incorrect  
 If you're not logged in and you don't have a session storage and you try to access the home page or any other by directly typing the url you will be logged out immediately  
-![login](https://user-images.githubusercontent.com/72103514/227166567-f243f3f1-9bea-4c14-9e49-f55903ab9aeb.PNG)
+<div style="text-align:center">
+  <img src="https://user-images.githubusercontent.com/72103514/227166567-f243f3f1-9bea-4c14-9e49-f55903ab9aeb.PNG" width="500" height="300">
+</div>
 ![signup](https://user-images.githubusercontent.com/72103514/227166601-e7c0c4d9-67a8-45ed-98b6-9f26f11dcd90.PNG)
 ![error](https://user-images.githubusercontent.com/72103514/227166647-bc192f1a-3ebc-465a-9e22-0c028750ed6c.PNG)
 
