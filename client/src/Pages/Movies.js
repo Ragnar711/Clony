@@ -10,10 +10,16 @@ import { MdOutlineLocalMovies } from "react-icons/md";
 import { RiMovie2Line } from "react-icons/ri";
 import { BiMovie } from "react-icons/bi";
 import "../styles/movies.css";
-import Axios from "redaxios";
 import { useState, useEffect, useCallback } from "react";
 import { db } from "../config/firebase-config";
-import { query, where, getDocs, collection } from "firebase/firestore";
+import {
+    query,
+    where,
+    getDocs,
+    deleteDoc,
+    collection,
+    doc,
+} from "firebase/firestore";
 
 const Movies = ({ setShowHeader }) => {
     const [movies, setMovies] = useState([]);
@@ -51,16 +57,8 @@ const Movies = ({ setShowHeader }) => {
     }, [fetchData, setShowHeader]);
     const deleteMedia = async (id) => {
         try {
-            const response = await Axios.delete(
-                `http://localhost:8080/deleteMedia/${id}`
-            );
-            const newMovies = movies.filter((movie) => movie.id !== id);
-            setMovies(newMovies);
-            const newTVShows = tvshows.filter((tvshow) => tvshow.id !== id);
-            setTvshows(newTVShows);
-            const newAnimes = animes.filter((anime) => anime.id !== id);
-            setAnimes(newAnimes);
-            return response.data;
+            const movieDoc = doc(db, "Media", id);
+            await deleteDoc(movieDoc);
         } catch (err) {
             throw new Error(err.message);
         }

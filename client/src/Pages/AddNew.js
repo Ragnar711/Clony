@@ -1,7 +1,8 @@
 import { Box, TextField, Button, Rating, Typography } from "@mui/material";
 import { useState, useEffect, useCallback } from "react";
-import Axios from "redaxios";
 import "../styles/addNew.css";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../config/firebase-config";
 
 function AddNew({ setShowHeader }) {
     const [form, setForm] = useState({
@@ -23,25 +24,13 @@ function AddNew({ setShowHeader }) {
         },
         [form]
     );
+    const mediaCollectionRef = collection(db, "Media");
     const submitMedia = async () => {
         try {
-            const mediaTypes = ["Movie", "TV Show", "Anime"];
-            if (!mediaTypes.includes(form.MediaType)) {
-                return window.alert("Wrong media type");
-            }
-            if (form.Year < 1900 || form.Year > new Date().getFullYear()) {
-                return window.alert("Please Enter a Valid Year");
-            }
-            await Axios.post("http://localhost:8080/postMedia", form);
-            window.location.reload();
-        } catch (err) {
-            if (err.status === 400) {
-                window.alert(err.data.message);
-            } else if (err.status >= 500) {
-                window.alert("Internal error");
-            } else {
-                window.alert("Something went wrong");
-            }
+            //the form stays filled after it's submitted
+            await addDoc(mediaCollectionRef, form);
+        } catch (error) {
+            console.log(error);
         }
     };
     useEffect(() => {
@@ -129,6 +118,7 @@ function AddNew({ setShowHeader }) {
                         variant="outlined"
                         onChange={handleChange}
                     />
+                    {/*Actor3 doesn't get submitted to firebase document*/}
                     <TextField
                         className="input"
                         name="Actor3"
@@ -138,7 +128,7 @@ function AddNew({ setShowHeader }) {
                     />
                     <TextField
                         className="input"
-                        name="Actor3"
+                        name="Actor4"
                         label="Actor 4"
                         variant="outlined"
                         onChange={handleChange}
