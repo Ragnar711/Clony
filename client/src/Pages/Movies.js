@@ -11,7 +11,9 @@ import { RiMovie2Line } from "react-icons/ri";
 import { BiMovie } from "react-icons/bi";
 import "../styles/movies.css";
 import Axios from "redaxios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { db } from "../config/firebase-config";
+import { query, where, getDocs, collection } from "firebase/firestore";
 
 const Movies = ({ setShowHeader }) => {
     const [movies, setMovies] = useState([]);
@@ -19,36 +21,34 @@ const Movies = ({ setShowHeader }) => {
     const [animes, setAnimes] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
+    const mediaCollectionRef = collection(db, "Media");
+    const fetchData = useCallback(
+        async (mediaType, setData) => {
+            try {
+                const mediaQuery = query(
+                    mediaCollectionRef,
+                    where("MediaType", "==", mediaType)
+                );
+                const data = await getDocs(mediaQuery);
+                const filteredData = data.docs.map((doc) => ({
+                    ...doc.data(),
+                    id: doc.id,
+                }));
+                setData(filteredData);
+                setLoading(false);
+            } catch (error) {
+                setError(error);
+                setLoading(false);
+            }
+        },
+        [mediaCollectionRef]
+    );
     useEffect(() => {
-        Axios.get("http://localhost:8080/getMovies")
-            .then((response) => {
-                setMovies(response.data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                setError(error);
-                setLoading(false);
-            });
-        Axios.get("http://localhost:8080/getAnimes")
-            .then((response) => {
-                setAnimes(response.data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                setError(error);
-                setLoading(false);
-            });
-        Axios.get("http://localhost:8080/getTVShows")
-            .then((response) => {
-                setTvshows(response.data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                setError(error);
-                setLoading(false);
-            });
+        fetchData("Movie", setMovies);
+        fetchData("TV Show", setTvshows);
+        fetchData("Anime", setAnimes);
         setShowHeader(true);
-    }, [setShowHeader]);
+    }, [fetchData, setShowHeader]);
     const deleteMedia = async (id) => {
         try {
             const response = await Axios.delete(
@@ -71,6 +71,37 @@ const Movies = ({ setShowHeader }) => {
     if (error) {
         return <p>Error: {error.message}</p>;
     }
+    const MediaTable = ({ mediaItems, deleteMedia }) => (
+        <div className="media_table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Year</th>
+                        <th>Rating</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {mediaItems.map((item) => (
+                        <tr key={item.id}>
+                            <td>{item.Name}</td>
+                            <td>{item.Year}</td>
+                            <td>{item.Review}</td>
+                            <td>
+                                <button
+                                    className="deleteMovie"
+                                    onClick={() => deleteMedia(item.id)}
+                                >
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    );
     return (
         <ChakraProvider>
             <div className="moviesLayout">
@@ -88,115 +119,22 @@ const Movies = ({ setShowHeader }) => {
                     </TabList>
                     <TabPanels>
                         <TabPanel>
-                            <div className="media_table">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Year</th>
-                                            <th>Rating</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {movies.map((item) => {
-                                            return (
-                                                <tr key={item.id}>
-                                                    <td>{item.Name}</td>
-                                                    <td>{item.Year}</td>
-                                                    <td>{item.Review}</td>
-                                                    <td>
-                                                        <button
-                                                            className="deleteMovie"
-                                                            onClick={() => {
-                                                                deleteMedia(
-                                                                    item.id
-                                                                );
-                                                            }}
-                                                        >
-                                                            Delete
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        })}
-                                    </tbody>
-                                </table>
-                            </div>
+                            <MediaTable
+                                mediaItems={movies}
+                                deleteMedia={deleteMedia}
+                            />
                         </TabPanel>
                         <TabPanel>
-                            <div className="media_table">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Year</th>
-                                            <th>Rating</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {tvshows.map((item) => {
-                                            return (
-                                                <tr key={item.id}>
-                                                    <td>{item.Name}</td>
-                                                    <td>{item.Year}</td>
-                                                    <td>{item.Review}</td>
-                                                    <td>
-                                                        <button
-                                                            className="deleteMovie"
-                                                            onClick={() => {
-                                                                deleteMedia(
-                                                                    item.id
-                                                                );
-                                                            }}
-                                                        >
-                                                            Delete
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        })}
-                                    </tbody>
-                                </table>
-                            </div>
+                            <MediaTable
+                                mediaItems={tvshows}
+                                deleteMedia={deleteMedia}
+                            />
                         </TabPanel>
                         <TabPanel>
-                            <div className="media_table">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Year</th>
-                                            <th>Rating</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {animes.map((item) => {
-                                            return (
-                                                <tr key={item.id}>
-                                                    <td>{item.Name}</td>
-                                                    <td>{item.Year}</td>
-                                                    <td>{item.Review}</td>
-                                                    <td>
-                                                        <button
-                                                            className="deleteMovie"
-                                                            onClick={() => {
-                                                                deleteMedia(
-                                                                    item.id
-                                                                );
-                                                            }}
-                                                        >
-                                                            Delete
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            );
-                                        })}
-                                    </tbody>
-                                </table>
-                            </div>
+                            <MediaTable
+                                mediaItems={animes}
+                                deleteMedia={deleteMedia}
+                            />
                         </TabPanel>
                     </TabPanels>
                 </Tabs>
