@@ -2,19 +2,21 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Suspense, lazy, useState } from "react";
 import "./App.css";
 
-const Header = lazy(() => import("./components/Header"));
-const AddUser = lazy(() => import("./pages/AddUser"));
-const AddNew = lazy(() => import("./pages/AddNew"));
-const Movies = lazy(() => import("./pages/Movies"));
-const Actors = lazy(() => import("./pages/Actors"));
-const Stats = lazy(() => import("./pages/Stats"));
-const Login = lazy(() => import("./pages/Login"));
-const Unfound = lazy(() => import("./pages/404"));
+const Header = lazy(() => import("./Components/Header"));
+const AddUser = lazy(() => import("./Pages/AddUser"));
+const AddNew = lazy(() => import("./Pages/AddNew"));
+const Movies = lazy(() => import("./Pages/Movies"));
+const Actors = lazy(() => import("./Pages/Actors"));
+const Stats = lazy(() => import("./Pages/Stats"));
+const Login = lazy(() => import("./Pages/Login"));
+const Unfound = lazy(() => import("./Pages/404"));
+const ResolutionRestriction = lazy(() => import("./Components/Restrict"));
 
 function App() {
     const [showHeader, setShowHeader] = useState(true);
     return (
         <div className="App">
+            <ResolutionRestriction />
             <Router>
                 <Suspense fallback={<div>Loading...</div>}>
                     {showHeader ? <Header /> : ""}
