@@ -13,7 +13,7 @@
 }
 
 body {
-    background-color: rgb(48, 48, 48);
+    background-image: url("../assets/addNewBg.jpg");
 }
 
 .addNewLayout {
@@ -157,4 +157,9 @@ body {
 .btn-add:hover:after {
     width: 100%;
     transition: 800ms ease all;
+}
+@media only screen and (min-width: 1280px) and (min-height: 720px) {
+    body {
+        display: block;
+    }
 }
