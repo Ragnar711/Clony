@@ -10,6 +10,8 @@ import {
     ChakraProvider,
     CloseButton,
 } from "@chakra-ui/react";
+import { auth, googleProvider } from "../config/firebase-config";
+import { signInWithPopup } from "firebase/auth";
 
 const Login = ({ setShowHeader }) => {
     const navigate = useNavigate();
@@ -35,12 +37,24 @@ const Login = ({ setShowHeader }) => {
             setErrorMessage("Incorrect email or password");
         }
     };
+    const signInGoogle = async (e) => {
+        e.preventDefault();
+        try {
+            await signInWithPopup(auth, googleProvider);
+            sessionStorage.setItem("username", "GG");
+            navigate("/Home");
+        } catch (error) {
+            console.log("Error during Google sign-in:", error);
+            setShowAlert(true);
+            setErrorMessage("Error during Google sign-in. Please try again");
+        }
+    };
     useEffect(() => {
         setShowHeader(false);
         if (sessionStorage.getItem("username")) {
             navigate("/Home");
         }
-    }, []);
+    }, [setShowHeader, navigate]);
     return (
         <ChakraProvider>
             {showAlert ? (
@@ -119,6 +133,16 @@ const Login = ({ setShowHeader }) => {
                                     <span className="icon arrow"></span>
                                 </span>
                                 <span className="button-text">Login</span>
+                            </button>
+                            <button
+                                type="button"
+                                className="learn-more"
+                                onClick={(e) => signInGoogle(e)}
+                            >
+                                <span className="circle" aria-hidden="true">
+                                    <span className="icon arrow"></span>
+                                </span>
+                                <span className="button-text">Google</span>
                             </button>
                         </div>
                     </div>

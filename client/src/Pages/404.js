@@ -6,7 +6,7 @@ const NotFound = ({ setShowHeader }) => {
     const navigate = useNavigate();
     useEffect(() => {
         setShowHeader(false);
-    }, []);
+    }, [setShowHeader]);
     return (
         <div className="cont404">
             <section className="wrapper">

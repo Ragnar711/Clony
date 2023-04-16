@@ -42,7 +42,7 @@ const AddUser = ({ setShowHeader }) => {
     };
     useEffect(() => {
         setShowHeader(false);
-    }, []);
+    }, [setShowHeader]);
     return (
         <ChakraProvider>
             {showAlert ? (

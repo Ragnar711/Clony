@@ -46,7 +46,7 @@ function AddNew({ setShowHeader }) {
     };
     useEffect(() => {
         setShowHeader(true);
-    }, []);
+    }, [setShowHeader]);
     return (
         <div className="AddNewLayout">
             <Box
