@@ -27,7 +27,6 @@ function AddNew({ setShowHeader }) {
     const mediaCollectionRef = collection(db, "Media");
     const submitMedia = async () => {
         try {
-            //the form stays filled after it's submitted
             await addDoc(mediaCollectionRef, form);
         } catch (error) {
             console.log(error);
@@ -36,6 +35,24 @@ function AddNew({ setShowHeader }) {
     useEffect(() => {
         setShowHeader(true);
     }, [setShowHeader]);
+    const renderTextField = (name, label) => (
+        <TextField
+            className="input"
+            name={name}
+            label={label}
+            variant="outlined"
+            onChange={handleChange}
+            required={["Name", "Year"].includes(name)}
+        />
+    );
+    const renderActorsAndGenres = () =>
+        ["Actor1", "Actor2", "Actor3", "Actor4", "Genre1", "Genre2"].map(
+            (name) =>
+                renderTextField(
+                    name,
+                    `${name.replace(/\d+$/, "")} ${name.match(/\d+$/)}`
+                )
+        );
     return (
         <div className="AddNewLayout">
             <Box
@@ -49,42 +66,11 @@ function AddNew({ setShowHeader }) {
             >
                 <h1 className="addNewHeader">Add New Media</h1>
                 <div className="firstRow">
-                    <div>
-                        <TextField
-                            className="input"
-                            name="Name"
-                            label="Name"
-                            variant="outlined"
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <TextField
-                            className="input"
-                            name="Year"
-                            label="Year"
-                            variant="outlined"
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div>
-                        <TextField
-                            className="input"
-                            name="MediaType"
-                            label="Media Type"
-                            variant="outlined"
-                            onChange={handleChange}
-                        />
-                    </div>
+                    {renderTextField("Name", "Name")}
+                    {renderTextField("Year", "Year")}
+                    {renderTextField("MediaType", "Media Type")}
                 </div>
-                <Box
-                    sx={{
-                        "& > legend": { mt: 2 },
-                    }}
-                    className="rating"
-                >
+                <Box sx={{ "& > legend": { mt: 2 } }} className="rating">
                     <Typography component="legend" className="ratingLegend">
                         Rating
                     </Typography>
@@ -95,67 +81,10 @@ function AddNew({ setShowHeader }) {
                     />
                 </Box>
                 <div className="director">
-                    <TextField
-                        className="input"
-                        name="Director"
-                        label="Director"
-                        variant="outlined"
-                        onChange={handleChange}
-                    />
+                    {renderTextField("Director", "Director")}
                 </div>
-                <div className="actors">
-                    <TextField
-                        className="input"
-                        name="Actor1"
-                        label="Actor 1"
-                        variant="outlined"
-                        onChange={handleChange}
-                    />
-                    <TextField
-                        className="input"
-                        name="Actor2"
-                        label="Actor 2"
-                        variant="outlined"
-                        onChange={handleChange}
-                    />
-                    {/*Actor3 doesn't get submitted to firebase document*/}
-                    <TextField
-                        className="input"
-                        name="Actor3"
-                        label="Actor 3"
-                        variant="outlined"
-                        onChange={handleChange}
-                    />
-                    <TextField
-                        className="input"
-                        name="Actor4"
-                        label="Actor 4"
-                        variant="outlined"
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="actors">
-                    <TextField
-                        className="input"
-                        name="Genre1"
-                        label="Genre 1"
-                        variant="outlined"
-                        onChange={handleChange}
-                    />
-                    <TextField
-                        className="input"
-                        name="Genre2"
-                        label="Genre 2"
-                        variant="outlined"
-                        onChange={handleChange}
-                    />
-                </div>
-                <Button
-                    onClick={() => {
-                        submitMedia();
-                    }}
-                    className="custom-btn btn-add"
-                >
+                <div className="actors">{renderActorsAndGenres()}</div>
+                <Button onClick={submitMedia} className="custom-btn btn-add">
                     Add Media
                 </Button>
             </Box>

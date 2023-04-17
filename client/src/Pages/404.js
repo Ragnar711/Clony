@@ -7,33 +7,34 @@ const NotFound = ({ setShowHeader }) => {
     useEffect(() => {
         setShowHeader(false);
     }, [setShowHeader]);
+    const renderScene = (depth, children) => {
+        return (
+            <div className={depth} data-depth={depth}>
+                <div className="content">
+                    {children.map((child, index) => (
+                        <span key={index} className="piece"></span>
+                    ))}
+                </div>
+            </div>
+        );
+    };
+    const renderScenes = () => {
+        const scenes = [
+            { depth: "one", children: [1, 2, 3] },
+            { depth: "two", children: [4, 5, 6] },
+            { depth: "three", children: [7, 8, 9] },
+        ];
+        return scenes.map(({ depth, children }) =>
+            renderScene(depth, children)
+        );
+    };
     return (
         <div className="cont404">
             <section className="wrapper">
                 <div className="container">
                     <div id="scene" className="scene" data-hover-only="false">
                         <div className="circle" data-depth="1.2"></div>
-                        <div className="one" data-depth="0.9">
-                            <div className="content">
-                                <span className="piece"></span>
-                                <span className="piece"></span>
-                                <span className="piece"></span>
-                            </div>
-                        </div>
-                        <div className="two" data-depth="0.60">
-                            <div className="content">
-                                <span className="piece"></span>
-                                <span className="piece"></span>
-                                <span className="piece"></span>
-                            </div>
-                        </div>
-                        <div className="three" data-depth="0.40">
-                            <div className="content">
-                                <span className="piece"></span>
-                                <span className="piece"></span>
-                                <span className="piece"></span>
-                            </div>
-                        </div>
+                        {renderScenes()}
                         <p className="p404" data-depth="0.50">
                             404
                         </p>
