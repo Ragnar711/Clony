@@ -42,7 +42,7 @@ const AddUser = ({ setShowHeader }) => {
     };
     useEffect(() => {
         setShowHeader(false);
-    }, []);
+    }, [setShowHeader]);
     return (
         <ChakraProvider>
             {showAlert ? (
@@ -72,7 +72,6 @@ const AddUser = ({ setShowHeader }) => {
                 ""
             )}
             <div className="addUser">
-                <h1>Sign Up</h1>
                 <form
                     className="addUserForm"
                     onSubmit={(e) => {

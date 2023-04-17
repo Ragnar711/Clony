@@ -40,7 +40,7 @@ const Login = ({ setShowHeader }) => {
         if (sessionStorage.getItem("username")) {
             navigate("/Home");
         }
-    }, []);
+    }, [navigate, setShowHeader]);
     return (
         <ChakraProvider>
             {showAlert ? (

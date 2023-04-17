@@ -10,7 +10,7 @@ const Actors = ({ setShowHeader }) => {
             setActors(response.data);
         });
         setShowHeader(true);
-    }, []);
+    }, [setShowHeader]);
     const handleQueryChange = (e) => setQuery(e.target.value);
     const filteredActors = actors.filter((actor) =>
         actor.actor.toLowerCase().includes(query.toLowerCase())
