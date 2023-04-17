@@ -33,7 +33,7 @@ const Stats = ({ setShowHeader }) => {
             setGenres(response.data);
         });
         setShowHeader(true);
-    }, []);
+    }, [setShowHeader]);
     const options = {
         exportEnabled: true,
         animationEnabled: true,
