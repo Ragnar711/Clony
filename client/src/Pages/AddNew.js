@@ -35,24 +35,6 @@ function AddNew({ setShowHeader }) {
     useEffect(() => {
         setShowHeader(true);
     }, [setShowHeader]);
-    const renderTextField = (name, label) => (
-        <TextField
-            className="input"
-            name={name}
-            label={label}
-            variant="outlined"
-            onChange={handleChange}
-            required={["Name", "Year"].includes(name)}
-        />
-    );
-    const renderActorsAndGenres = () =>
-        ["Actor1", "Actor2", "Actor3", "Actor4", "Genre1", "Genre2"].map(
-            (name) =>
-                renderTextField(
-                    name,
-                    `${name.replace(/\d+$/, "")} ${name.match(/\d+$/)}`
-                )
-        );
     return (
         <div className="AddNewLayout">
             <Box

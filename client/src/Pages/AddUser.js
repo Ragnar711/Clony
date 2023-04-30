@@ -28,22 +28,6 @@ const AddUser = ({ setShowHeader }) => {
     useEffect(() => {
         setShowHeader(false);
     }, [setShowHeader]);
-    const renderInput = (name, type, placeholder, icon) => (
-        <div className="userName">
-            <span className="userNameIcon">
-                <icon.type color="white" size={25} />
-            </span>
-            <span className="userNameInput">
-                <input
-                    type={type}
-                    placeholder={placeholder}
-                    name={name}
-                    onChange={handleChange}
-                    required={type !== "email"}
-                />
-            </span>
-        </div>
-    );
     return (
         <ChakraProvider>
             {showAlert && (
@@ -70,8 +54,6 @@ const AddUser = ({ setShowHeader }) => {
                 </Stack>
             )}
             <div className="addUser">
-                <h1>Sign Up</h1>
-                <form className="addUserForm">
                 <form
                     className="addUserForm"
                     onSubmit={(e) => {

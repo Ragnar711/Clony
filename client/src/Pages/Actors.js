@@ -6,32 +6,10 @@ function Actors({ setShowHeader }) {
     const [actors, setActors] = useState([]);
     const [query, setQuery] = useState("");
     useEffect(() => {
-        async function fetchActors() {
-            try {
-                const mediaCollection = collection(db, "Media");
-                const querySnapshot = await getDocs(mediaCollection);
-                const actorCounts = querySnapshot.docs.reduce((acc, doc) => {
-                    const media = doc.data();
-                    ["Actor1", "Actor2", "Actor3", "Actor4"].forEach(
-                        (actorKey) => {
-                            const actor = media[actorKey];
-                            if (actor && actor !== "") {
-                                acc[actor] = (acc[actor] || 0) + 1;
-                            }
-                        }
-                    );
-                    return acc;
-                }, {});
-                const actorsArray = Object.entries(actorCounts).map(
-                    ([actor, movies_count]) => ({ actor, movies_count })
-                );
-                setActors(actorsArray);
-            } catch (error) {
-                console.error("Error fetching actors:", error);
-            }
-            setShowHeader(true);
-        }
-        fetchActors();
+        Axios.get("http://localhost:8080/getActors").then((response) => {
+            setActors(response.data);
+        });
+        setShowHeader(true);
     }, [setShowHeader]);
     const handleQueryChange = (e) => setQuery(e.target.value);
     const filteredActors = actors.filter((actor) =>

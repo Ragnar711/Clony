@@ -54,7 +54,7 @@ const Movies = ({ setShowHeader }) => {
         fetchData("TV Show", setTvshows);
         fetchData("Anime", setAnimes);
         setShowHeader(true);
-    }, [fetchData, setShowHeader]);
+    }, [setShowHeader]);
     const deleteMedia = async (id) => {
         try {
             const movieDoc = doc(db, "Media", id);

@@ -5,26 +5,19 @@ import "./Header.css";
 function Header() {
     const navigate = useNavigate();
     const getUserName = useCallback(() => {
-        const username = sessionStorage.getItem("username");
-        if (!username) {
+        if (sessionStorage.getItem("username")) {
+            sessionStorage.getItem("username");
+        } else {
             navigate("/");
         }
-        return username;
     }, [navigate]);
-    const logout = useCallback(() => {
+    const logout = () => {
         sessionStorage.clear();
         navigate("/");
     }, [navigate]);
     useEffect(() => {
         getUserName();
     }, [getUserName]);
-    const navItems = [
-        { path: "/Home", label: "Add" },
-        { path: "/Movies", label: "Medias" },
-        { path: "/Actors", label: "Actors" },
-        { path: "/Stats", label: "Stats" },
-        { onClick: logout, label: "Logout" },
-    ];
     return (
         <div className="navbar">
             <div className="nav-items">
