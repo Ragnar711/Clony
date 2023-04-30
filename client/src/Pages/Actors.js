@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Axios from "redaxios";
 import "../styles/actors.css";
+import Axios from "redaxios";
 
-const Actors = ({ setShowHeader }) => {
+function Actors({ setShowHeader }) {
     const [actors, setActors] = useState([]);
     const [query, setQuery] = useState("");
     useEffect(() => {
@@ -35,19 +35,17 @@ const Actors = ({ setShowHeader }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredActors.map((actor, key) => {
-                            return (
-                                <tr key={key}>
-                                    <td>{actor.actor}</td>
-                                    <td>{actor.movies_count}</td>
-                                </tr>
-                            );
-                        })}
+                        {filteredActors.map((actor, key) => (
+                            <tr key={key}>
+                                <td>{actor.actor}</td>
+                                <td>{actor.movies_count}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
         </div>
     );
-};
+}
 
 export default Actors;

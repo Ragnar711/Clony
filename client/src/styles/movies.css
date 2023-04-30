@@ -1,7 +1,6 @@
 table {
     background-color: white;
     width: 100%;
-    scroll-behavior: auto;
 }
 
 th {
@@ -21,7 +20,6 @@ td {
 .media_table {
     height: 80dvh;
     overflow-y: scroll;
-    scroll-behavior: smooth;
 }
 
 .deleteMovie {

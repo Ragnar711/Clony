@@ -1,9 +1,8 @@
 import "../styles/addUser.css";
 import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { AiOutlineUser, AiFillLock, AiOutlineMail } from "react-icons/ai";
 import { BiArrowBack } from "react-icons/bi";
-import Axios from "redaxios";
 import {
     Alert,
     AlertIcon,
@@ -20,32 +19,18 @@ const AddUser = ({ setShowHeader }) => {
         password: "",
     });
     const [showAlert, setShowAlert] = useState(false);
-    const [error, setError] = useState("");
     const handleChange = useCallback(
         (e) => {
             setForm({ ...form, [e.target.name]: e.target.value });
         },
         [form]
     );
-    const submitUser = async (e) => {
-        e.preventDefault();
-        try {
-            await Axios.post("http://localhost:8080/postUser", form).then(
-                () => {
-                    navigate("/");
-                }
-            );
-        } catch (err) {
-            setError(err.data.message);
-            setShowAlert(true);
-        }
-    };
     useEffect(() => {
         setShowHeader(false);
     }, [setShowHeader]);
     return (
         <ChakraProvider>
-            {showAlert ? (
+            {showAlert && (
                 <Stack spacing={3}>
                     <Alert
                         status="error"
@@ -57,7 +42,6 @@ const AddUser = ({ setShowHeader }) => {
                         marginTop={10}
                     >
                         <AlertIcon />
-                        {error}
                         <CloseButton
                             position="absolute"
                             right="8px"
@@ -68,8 +52,6 @@ const AddUser = ({ setShowHeader }) => {
                         />
                     </Alert>
                 </Stack>
-            ) : (
-                ""
             )}
             <div className="addUser">
                 <form
@@ -87,51 +69,19 @@ const AddUser = ({ setShowHeader }) => {
                         <BiArrowBack size={50} color="white" />
                     </span>
                     <div className="addUserInputs">
-                        <div className="userName">
-                            <span className="userNameIcon">
-                                <AiOutlineUser color="white" size={25} />
-                            </span>
-                            <span className="userNameInput">
-                                <input
-                                    type="text"
-                                    placeholder="Username"
-                                    name="username"
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </span>
-                        </div>
-                        <div className="userName">
-                            <span className="userNameIcon">
-                                <AiOutlineMail color="white" size={25} />
-                            </span>
-                            <span className="userNameInput">
-                                <input
-                                    id="email"
-                                    type="email"
-                                    placeholder="Email"
-                                    name="email"
-                                    onChange={handleChange}
-                                />
-                            </span>
-                        </div>
-                        <div className="password">
-                            <div>
-                                <span className="userNameIcon">
-                                    <AiFillLock color="white" size={25} />
-                                </span>
-                                <span className="userNameInput">
-                                    <input
-                                        id="password"
-                                        type="password"
-                                        placeholder="Password"
-                                        name="password"
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </span>
-                            </div>
-                        </div>
+                        {renderInput(
+                            "username",
+                            "text",
+                            "Username",
+                            AiOutlineUser
+                        )}
+                        {renderInput("email", "email", "Email", AiOutlineMail)}
+                        {renderInput(
+                            "password",
+                            "password",
+                            "Password",
+                            AiFillLock
+                        )}
                         <div id="container">
                             <button className="learn-more">
                                 <span className="circle" aria-hidden="true">

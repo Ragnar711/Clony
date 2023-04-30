@@ -100,20 +100,6 @@
         min-height: 280px;
     }
 }
-@media screen and (max-height: 660px) {
-    .wrapper .container .one,
-    .wrapper .container .two,
-    .wrapper .container .three,
-    .wrapper .container .circle,
-    .wrapper .container .p404 {
-        min-width: 280px;
-        min-height: 280px;
-        width: 60%;
-        height: 60%;
-        top: 20% !important;
-        left: 20% !important;
-    }
-}
 .wrapper .container .text {
     width: 60%;
     height: 40%;
@@ -129,12 +115,6 @@
         transform: translateY(40px);
     }
 }
-@media screen and (max-width: 799px) {
-    .wrapper .container .text {
-        min-height: 400px;
-        height: 80%;
-    }
-}
 .wrapper .container .text article {
     width: 400px;
     position: absolute;
@@ -148,11 +128,6 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-}
-@media screen and (max-width: 799px) {
-    .wrapper .container .text article {
-        width: 100%;
-    }
 }
 .wrapper .container .text article p {
     color: white;
@@ -194,11 +169,6 @@
     animation: anime404 0.6s cubic-bezier(0.3, 0.8, 1, 1.05) both;
     animation-delay: 1.2s;
 }
-@media screen and (max-width: 799px) {
-    .wrapper .container .p404 {
-        font-size: 100px;
-    }
-}
 @keyframes anime404 {
     0% {
         opacity: 0;
@@ -237,12 +207,6 @@
         height: 0;
     }
 }
-@media screen and (max-width: 799px) {
-    .wrapper .container .circle:before {
-        width: 400px;
-        height: 400px;
-    }
-}
 .wrapper .container .one .content:before {
     content: "";
     position: absolute;
@@ -255,12 +219,6 @@
         inset 5px 5px 20px rgba(50, 36, 62, 0.25),
         2px 2px 5px rgba(255, 255, 255, 0.2);
     animation: circle 0.8s 0.4s cubic-bezier(1, 0.06, 0.25, 1) backwards;
-}
-@media screen and (max-width: 799px) {
-    .wrapper .container .one .content:before {
-        width: 300px;
-        height: 300px;
-    }
 }
 .wrapper .container .one .content .piece {
     background: linear-gradient(90deg, #8077ea 13.7%, #eb73ff 94.65%);

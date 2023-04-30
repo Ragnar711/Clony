@@ -14,53 +14,22 @@ function Header() {
     const logout = () => {
         sessionStorage.clear();
         navigate("/");
-    };
+    }, [navigate]);
     useEffect(() => {
         getUserName();
     }, [getUserName]);
     return (
         <div className="navbar">
             <div className="nav-items">
-                <span
-                    className="nav-item"
-                    onClick={() => {
-                        navigate("/Home");
-                    }}
-                >
-                    Add
-                </span>
-                <span
-                    className="nav-item"
-                    onClick={() => {
-                        navigate("/Movies");
-                    }}
-                >
-                    Medias
-                </span>
-                <span
-                    className="nav-item"
-                    onClick={() => {
-                        navigate("/Actors");
-                    }}
-                >
-                    Actors
-                </span>
-                <span
-                    className="nav-item"
-                    onClick={() => {
-                        navigate("/Stats");
-                    }}
-                >
-                    Stats
-                </span>
-                <span
-                    className="nav-item"
-                    onClick={() => {
-                        logout();
-                    }}
-                >
-                    Logout
-                </span>
+                {navItems.map((item) => (
+                    <span
+                        key={item.path || item.label}
+                        className="nav-item"
+                        onClick={item.onClick || (() => navigate(item.path))}
+                    >
+                        {item.label}
+                    </span>
+                ))}
             </div>
         </div>
     );
