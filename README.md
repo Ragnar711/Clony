@@ -1,71 +1,65 @@
-# Clony - Your Movie, TV Show, and Anime Tracker
+Clony - Your Movie, TV Show, and Anime Tracker
 
-## Description
+Clony is your go-to platform for effortlessly keeping track of your favorite movies, TV shows, and animes. Whether you're a cinephile, a TV series aficionado, or an anime enthusiast, Clony has got you covered.
+Installation
+Server-side:
 
-Clony is a comprehensive platform designed to help you keep track of your favorite movies, TV shows, and animes. Whether you're a movie enthusiast, a TV show addict, or an anime lover, Clony has got you covered.
+    Begin by running npm init followed by npm install to set up the server dependencies.
+    Create a database using your preferred service provider supported by Prisma.
+    Specify the database URL in the environment file, as outlined in the Prisma documentation.
+    In your terminal, execute npx prisma migrate dev to synchronize your database with the necessary models.
+    To enable automatic server restarts during development, install nodemon globally with npm install -g nodemon, then run it in the terminal using nodemon.
 
-## Installation
+Your server should now be up and running. If any issues arise, follow the error messages for troubleshooting.
+Client-side:
 
-### Server-side:
+    Install pnpm globally by running npm install -g pnpm, then initialize the project with pnpm init.
+    Install the client-side dependencies by executing pnpm install.
+    Start the client-side application with pnpm run start.
 
-1. Run `npm init` followed by `npm install` to set up the server dependencies.
-2. Create a database using your preferred service provider supported by Prisma.
-3. Specify the database URL in the environment file, as mentioned in the Prisma documentation.
-4. In the terminal, execute `npx prisma migrate dev` to synchronize your database with the necessary models.
-5. Install nodemon globally with `npm install -g nodemon`, then run it in the terminal using `nodemon`.
-6. The server should now be running; if not, follow any error messages and troubleshoot accordingly.
+Usage
+Login and Signup:
 
-### Client-side:
+    On the initial page, you can either log in with your existing account or sign up if you don't have one yet (passwords are securely hashed for your safety).
+    Errors will be displayed if the username or password is incorrect.
+    Attempting to access any page directly by typing the URL without logging in and without an active session will automatically log you out.
 
-1. Install pnpm globally by running `npm install -g pnpm`, then initialize the project with `pnpm init`.
-2. Install the client-side dependencies by executing `pnpm install`.
-3. Start the client-side application with `pnpm run start`.
+Home:
 
-## Usage
+    Add new media on this page.
+    Name and year are required fields, and unreasonable years like 2024 (from the year 2023) are not allowed.
+    The media type must be one of the following: Movie, TV Show, Anime (casing matters).
+    Provide a rating, director (optional), up to four actors, and two genres.
+    Errors will be shown if any input is incorrect.
 
-1. **Login and Signup**:
+Media:
 
-    - On the initial page, you can either log in with your existing account or sign up if you don't have one yet (passwords are securely hashed for your safety).
-    - Errors will be displayed if the username or password is incorrect.
-    - If you attempt to access any page directly by typing the URL without logging in and without an active session, you will be automatically logged out.
+    View the different media you have watched, grouped by type and sorted from newest to oldest.
+    Delete media from this page.
 
-2. **Home**:
+Actors:
 
-    - Add new media on this page.
-    - Name and year are required fields, and unreasonable years like 2024 (from the year 2023) are not allowed.
-    - The media type must be one of the following: Movie, TV Show, Anime (casing matters).
-    - Provide a rating, director (optional), up to four actors, and two genres.
-    - Errors will be shown if any input is incorrect.
+    Discover your favorite actors and the number of media you've watched featuring them.
+    Actors are organized by the number of media from most to least.
+    Utilize the search field to look for any actor you desire.
 
-3. **Media**:
+Stats:
 
-    - View the different media you have watched, grouped by type and sorted from newest to oldest.
-    - Delete media from this page.
+    Gain insight into your watching habits, including the total number of movies, TV shows, and animes you've watched.
+    Check the number of movies watched this year, your favorite genres displayed in a pie chart, and a table with your favorite directors.
 
-4. **Actors**:
+404 Page:
 
-    - See your favorite actors and the number of media you've watched featuring them.
-    - Actors are organized by the number of media from most to least.
-    - Use the search field to look for any actor you want.
+    If you type an invalid URL, you'll be redirected to a custom 404 page with a button to return to the home page.
 
-5. **Stats**:
+Logout:
 
-    - Get an overview of your watching habits, including the total number of movies, TV shows, and animes you've watched.
-    - Check the number of movies watched this year, your favorite genres displayed in a pie chart, and a table with your favorite directors.
-
-6. **404 Page**:
-
-    - If you type an invalid URL, you'll be redirected to a custom 404 page with a button to return to the home page.
-
-7. **Logout**:
-    - Easily log out by clicking the logout button in the navbar.
+    Effortlessly log out by clicking the logout button in the navbar.
 
 Note: Clony is not yet responsive, so please use it on a desktop or laptop for the best experience.
+Support
 
-## Support
-
-If you need any assistance or have questions, feel free to email me at azizbechaib711@gmail.com.
-
-## Project Status
+If you require assistance or have any questions, feel free to email me at azizbechaib711@gmail.com.
+Project Status
 
 Clony is still a work in progress, and more exciting functionalities will be added soon. Stay tuned for updates!
