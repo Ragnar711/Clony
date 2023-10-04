@@ -2,24 +2,31 @@
 
 ## Description
 
-Clony is a comprehensive platform designed to help you keep track of your favorite movies, TV shows, and animes. Whether you're a movie enthusiast, a TV show addict, or an anime lover, Clony has got you covered.
+Clony is your ultimate platform for managing your favorite movies, TV shows, and anime. Whether you're a cinephile, a TV series aficionado, or an anime enthusiast, Clony has you covered.
 
 ## Installation
 
-### Server-side:
+### Server-side
 
-1. Run `npm init` followed by `npm install` to set up the server dependencies.
-2. Create a database using your preferred service provider supported by Prisma.
-3. Specify the database URL in the environment file, as mentioned in the Prisma documentation.
-4. In the terminal, execute `npx prisma migrate dev` to synchronize your database with the necessary models.
-5. Install nodemon globally with `npm install -g nodemon`, then run it in the terminal using `nodemon`.
-6. The server should now be running; if not, follow any error messages and troubleshoot accordingly.
+1. **Install Dependencies**: Begin by running `npm install` to set up the server dependencies.
 
-### Client-side:
+2. **Database Setup**: Create a database using your preferred service provider supported by Prisma.
 
-1. Install pnpm globally by running `npm install -g pnpm`, then initialize the project with `pnpm init`.
-2. Install the client-side dependencies by executing `pnpm install`.
-3. Start the client-side application with `pnpm run start`.
+3. **Database Configuration**: Specify the database URL in the environment file, following Prisma's documentation.
+
+4. **Database Migration**: In the terminal, execute `npx prisma migrate dev` to synchronize your database with the necessary models.
+
+5. **Server Launch**: Install nodemon globally with `npm install -g nodemon`, then run it in the terminal using `nodemon`.
+
+6. **Server Status**: Your server should now be running; if not, follow any error messages and troubleshoot accordingly.
+
+### Client-side
+
+1. **Global Package**: Install pnpm globally by running `npm install -g pnpm`.
+
+2. **Client Dependencies**: Install the client-side dependencies by executing `pnpm install`.
+
+3. **Client Start**: Start the client-side application with `pnpm run start`.
 
 ## Usage
 
@@ -58,13 +65,14 @@ Clony is a comprehensive platform designed to help you keep track of your favori
     - If you type an invalid URL, you'll be redirected to a custom 404 page with a button to return to the home page.
 
 7. **Logout**:
+
     - Easily log out by clicking the logout button in the navbar.
 
-Note: Clony is not yet responsive, so please use it on a desktop or laptop for the best experience.
+**Note**: Clony is not yet responsive, so please use it on a desktop or laptop for the best experience.
 
 ## Support
 
-If you need any assistance or have questions, feel free to email me at azizbechaib711@gmail.com.
+If you need any assistance or have questions, feel free to email me at [azizbechaib711@gmail.com](mailto:azizbechaib711@gmail.com).
 
 ## Project Status
 
