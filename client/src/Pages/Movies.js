@@ -48,7 +48,7 @@ const Movies = ({ setShowHeader }) => {
                 setLoading(false);
             });
         setShowHeader(true);
-    }, []);
+    }, [setShowHeader]);
     const deleteMedia = async (id) => {
         try {
             const response = await Axios.delete(

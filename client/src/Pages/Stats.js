@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Axios from "redaxios";
 import "../styles/stats.css";
 import CanvasJSReact from "../canvasjs.react";
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+let CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const Stats = ({ setShowHeader }) => {
     const [moviesCount, setMoviesCount] = useState(0);
@@ -33,7 +33,7 @@ const Stats = ({ setShowHeader }) => {
             setGenres(response.data);
         });
         setShowHeader(true);
-    }, []);
+    }, [setShowHeader]);
     const options = {
         exportEnabled: true,
         animationEnabled: true,

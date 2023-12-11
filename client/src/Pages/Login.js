@@ -2,7 +2,6 @@ import "../styles/Login.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AiOutlineUser, AiFillLock } from "react-icons/ai";
-import Axios from "redaxios";
 import {
     Alert,
     AlertIcon,
@@ -17,30 +16,44 @@ const Login = ({ setShowHeader }) => {
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [showAlert, setShowAlert] = useState(false);
+
     const login = async (e) => {
         e.preventDefault();
         try {
-            const res = await Axios.put("http://localhost:8080/putUser", {
-                username,
-                password,
-            });
-            let initials = "";
-            res.data[0].username.split(" ").map((word) => {
-                return (initials += word[0].toUpperCase());
-            });
-            sessionStorage.setItem("username", initials);
-            navigate("/Home");
+            const dummyUserData = {
+                username: "admin",
+                password: "admin",
+            };
+
+            if (
+                username === dummyUserData.username &&
+                password === dummyUserData.password
+            ) {
+                let initials = "";
+                dummyUserData.username.split(" ").forEach((word) => {
+                    initials += word[0].toUpperCase();
+                    return initials;
+                });
+
+                sessionStorage.setItem("username", initials);
+                navigate("/Home");
+            } else {
+                setShowAlert(true);
+                setErrorMessage("Incorrect username or password");
+            }
         } catch (error) {
             setShowAlert(true);
-            setErrorMessage("Incorrect email or password");
+            setErrorMessage("An error occurred during login");
         }
     };
+
     useEffect(() => {
         setShowHeader(false);
         if (sessionStorage.getItem("username")) {
             navigate("/Home");
         }
-    }, []);
+    }, [navigate, setShowHeader]);
+
     return (
         <ChakraProvider>
             {showAlert ? (

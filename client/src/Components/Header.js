@@ -4,20 +4,20 @@ import "./Header.css";
 
 function Header() {
     const navigate = useNavigate();
-    const getUserName = () => {
-        if (sessionStorage.getItem("username")) {
-            sessionStorage.getItem("username");
-        } else {
-            navigate("/");
-        }
-    };
     const logout = () => {
         sessionStorage.clear();
         navigate("/");
     };
     useEffect(() => {
+        const getUserName = () => {
+            if (sessionStorage.getItem("username")) {
+                sessionStorage.getItem("username");
+            } else {
+                navigate("/");
+            }
+        };
         getUserName();
-    }, []);
+    }, [navigate]);
     return (
         <div className="navbar">
             <div className="nav-items">
